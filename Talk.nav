@@ -153,21 +153,29 @@
 \defcounter {refsection}{0}\relax 
 \headcommand {\beamer@framepages {56}{56}}
 \defcounter {refsection}{0}\relax 
-\headcommand {\beamer@sectionpages {54}{56}}
+\headcommand {\slideentry {3}{0}{3}{57/58}{}{0}}
 \defcounter {refsection}{0}\relax 
-\headcommand {\beamer@subsectionpages {54}{56}}
+\headcommand {\beamer@framepages {57}{58}}
 \defcounter {refsection}{0}\relax 
-\headcommand {\sectionentry {4}{Conclusion}{57}{Conclusion}{0}}
+\headcommand {\slideentry {3}{0}{4}{59/59}{}{0}}
 \defcounter {refsection}{0}\relax 
-\headcommand {\slideentry {4}{0}{1}{57/57}{}{0}}
+\headcommand {\beamer@framepages {59}{59}}
 \defcounter {refsection}{0}\relax 
-\headcommand {\beamer@framepages {57}{57}}
+\headcommand {\beamer@sectionpages {54}{59}}
 \defcounter {refsection}{0}\relax 
-\headcommand {\slideentry {4}{0}{2}{58/58}{}{0}}
+\headcommand {\beamer@subsectionpages {54}{59}}
 \defcounter {refsection}{0}\relax 
-\headcommand {\beamer@framepages {58}{58}}
-\headcommand {\beamer@partpages {1}{59}}
-\headcommand {\beamer@subsectionpages {57}{59}}
-\headcommand {\beamer@sectionpages {57}{59}}
-\headcommand {\beamer@documentpages {59}}
-\headcommand {\gdef \inserttotalframenumber {31}}
+\headcommand {\sectionentry {4}{Conclusion}{60}{Conclusion}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {4}{0}{1}{60/60}{}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {60}{60}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {4}{0}{2}{61/61}{}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {61}{61}}
+\headcommand {\beamer@partpages {1}{62}}
+\headcommand {\beamer@subsectionpages {60}{62}}
+\headcommand {\beamer@sectionpages {60}{62}}
+\headcommand {\beamer@documentpages {62}}
+\headcommand {\gdef \inserttotalframenumber {33}}

@@ -4,6 +4,7 @@
 \usepackage{xcolor}
 \usepackage{lmodern}
 \usepackage{amssymb}
+\usepackage[makeroom]{cancel} %for crossing symbols
 %\usepackage{calligra}
 %\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n} %For small \mathcal letters
 \makeatletter
@@ -832,7 +833,7 @@ $\rightsquigarrow$ Integration
 			& Classical & Curved \\ \hline
 			Infinitesimal & Lie algebra $\mathfrak{g}$ & LAB $\mathcal{g}$ \\
 			\rowcolor{Gray}
-			Integrated & Lie group $G$ & \textcolor[rgb]{0,0.33,0}{LGB\footnote{LGB = Lie group bundle} $\mathcal{G}$?} \\
+			Integrated & Lie group $G$ & \textcolor[rgb]{1,0.41,0.13}{LGB\footnote{LGB = Lie group bundle} $\mathcal{G}$?} \\
 		\end{tabularx}
 \end{table}
 
@@ -867,6 +868,49 @@ p \cdot e_{f(p)} &= p
 \ea
 for all $p \in N$ and $g, h \in \mathcal{G}_{f(p)}$, where $e_{f(p)}$ is the neutral element of $\mathcal{G}_{f(p)}$.
 \end{definition}
+\end{frame}
+
+{
+\setbeamertemplate{footline}{}
+\begin{frame}{Examples}
+	\begin{example}
+	$\mathcal{G}$ acts canonically on itself:
+	\bas
+	\mathcal{G} * \mathcal{G} &\to \mathcal{G},\\
+	(q,h) &\mapsto qh.
+	\eas
+	\end{example}
+\pause
+\begin{example}[Recovering Lie group action]
+$\bullet$ Either by $M = \{*\}$.
+
+$\bullet$ Or by $\mathcal{G} \cong M \times G$, then also $N * \mathcal{G} \cong N \times G$, and we can define
+\bas
+N \times G &\to N, \\
+(p, g) &\mapsto p \cdot g \coloneqq p \cdot \bigl( f(p), g \bigr),
+\eas
+which is equivalent to $N * \mathcal{G} \to N$.
+\end{example}
+\end{frame}
+}
+
+\renewcommand\insertreferences{{\tiny  Ieke Moerdijk, Janez Mrcun. Introduction to Foliations and Lie Groupoids. \newline \textit{Cambridge Studies in Advanced Mathematics 91, Cambridge University Press, Cambridge}, 2003}}
+
+\begin{frame}{Principal bundle}
+Still a fibre bundle
+\begin{center}
+	\begin{tikzcd}[ampersand replacement=\&]
+	G \arrow{r} \& \mathcal{P} \arrow{d} \\
+	\& M
+	\end{tikzcd}
+\end{center}
+but with $\mathcal{G}$-action
+\bas
+\begin{matrix}
+	\textcolor[rgb]{1,0,0}{\xcancel{\mathcal{P} \times G}} &\to \mathcal{P} \\
+	\mathcal{P} * \mathcal{G} &
+\end{matrix}
+\eas
 \end{frame}
 
 \section{Conclusion}
