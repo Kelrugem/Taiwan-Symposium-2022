@@ -1,0 +1,937 @@
+\documentclass[hyperref={pdfpagelabels=false}]{beamer}
+
+\usepackage[english]{babel}
+\usepackage{xcolor}
+\usepackage{lmodern}
+\usepackage{amssymb}
+%\usepackage{calligra}
+%\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n} %For small \mathcal letters
+\makeatletter
+\DeclareFontEncoding{LS1}{}{}
+\DeclareFontSubstitution{LS1}{stix}{m}{n}
+\DeclareMathAlphabet{\mathKel}{LS1}{stixscr}{m}{n}
+\DeclareMathAlphabet{\mathcal}{LS1}{stixscr}{m}{n}
+\usepackage{amsthm}
+\usepackage{amsmath}
+%\usepackage{mathabx}
+\usepackage{stmaryrd}
+\usepackage{amsbsy}
+\usepackage{dsfont}
+\usepackage{mathtools} %für mathclap und coloneqq
+%\usepackage{amsbsy}
+\usepackage{mleftright} %Distanz zu \left \right weg
+\usepackage{tikz-cd}
+
+\usepackage{tabularx} %Automatic line break of tables using X instead c l r
+%\usepackage{longtable} %table auf mehreren Seiten
+%\usepackage{ltxtable} %Combination of both above
+\usepackage{xcolor, colortbl}
+
+%Für die ganzen Diagramme
+\usepackage{pgfplots}
+\usepackage{graphicx} %Für raisebox, vertical displacement of figures
+\usetikzlibrary{decorations.markings}
+
+\definecolor{Gray}{gray}{0.85}
+%\usepackage[style=authortitle-icomp]{biblatex}
+%\usepackage[babel,german=guillemets]{csquotes}
+
+%\setcounter{tocdepth}{4}
+%\setcounter{tocdepth}{5}
+%\setcounter{secnumdepth}{4}
+%\setcounter{secnumdepth}{5}
+\usepackage[backend=biber, style=numeric]{biblatex}
+\addbibresource{Literatur.bib}
+\newcommand{\footlineextra}[1]{
+    \begin{tikzpicture}[remember picture,overlay]
+        \node[yshift=2ex,anchor=south west] at (current page.south west) {\usebeamerfont{author in head/foot}\hspace{2ex}#1};
+    \end{tikzpicture}
+}
+%\DeclareMathOperator{\sAut}{\mathKel{A\mkern-5.5mu u\mkern-4mu t\mkern-1.5mu}}
+%\DeclareMathOperator{\saut}{\mathKel{a\mkern-4.5mu u\mkern-4mu t\mkern-1.5mu}}
+%\DeclareMathOperator{\sEnd}{\mathKel{E\mkern-4mu n\mkern-4.5mu d\mkern-1mu}}
+%\setbeamertemplate{bibliography entry title}{}
+%\setbeamertemplate{bibliography entry location}{}
+%\setbeamertemplate{bibliography entry note}{}
+%\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+%\pagestyle{headings}
+%
+%\makeatletter
+%\patchcmd{\beamer@calculateheadfoot}{\advance\footheight by 5pt}{\advance\footheight by 20pt}{}{}
+%\makeatother
+
+%\makeatletter
+%\setbeamertemplate{footline}
+%{
+  %\leavevmode%
+  %\hbox{%
+  %\begin{beamercolorbox}[wd=.175\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    %\usebeamerfont{author in head/foot}\insertshortauthor\expandafter\beamer@ifempty\expandafter{\beamer@shortinstitute}{}{~~(\insertshortinstitute)}
+  %\end{beamercolorbox}%
+  %\begin{beamercolorbox}[wd=.65\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    %\usebeamerfont{title in head/foot}\insertshorttitle
+  %\end{beamercolorbox}%
+  %\begin{beamercolorbox}[wd=.175\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    %\usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+    %%\insertframenumber{} 
+		%%/ \inserttotalframenumber\hspace*{2ex} 
+  %\end{beamercolorbox}}%
+  %\vskip0pt%
+%}
+%\makeatother 
+
+%\setbeamercolor{footlinecolor}{fg=white,bg=Navyblue}
+\newcommand\insertreferences{}
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.09\paperwidth, ht=5ex,dp=1ex,center, sep=1.4ex]{author in head/foot}%
+    \usebeamerfont{author in head/foot}
+		%\vfill
+		%Sources
+		%\vfill
+		Sources
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.91\paperwidth,ht=5ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}
+    \insertreferences
+
+  \end{beamercolorbox}
+}
+}
+
+%\setbeamertemplate{footline}
+%{
+  %\leavevmode%
+  %\hbox{%
+  %\begin{beamercolorbox}[wd=.09\paperwidth,ht=4.35ex,dp=20ex,center]{author in head/foot}%
+    %\usebeamerfont{author in head/foot}
+		%Source
+  %\end{beamercolorbox}%
+  %\begin{beamercolorbox}[wd=.91\paperwidth,ht=4.35ex,dp=20ex,center]{title in head/foot}%
+    %\usebeamerfont{title in head/foot}
+		%Camilo Arias Abad, Marius Crainic. Representations up to homotopy of Lie algebroids. \textit{Journal für die reine und angewandte Mathematik (Crelles Journal)}, 2012(663):91–126, 2012.
+  %\end{beamercolorbox}%
+  %%\begin{beamercolorbox}[wd=.175\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    %%\usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+    %%%\insertframenumber{} 
+		%%%/ \inserttotalframenumber\hspace*{2ex} 
+  %%\end{beamercolorbox}
+	%}%
+  %\vskip0pt%
+%}
+
+\title{Geometry of curved Yang-Mills-Higgs gauge theories}   
+%\title{Géométrie des théories de jauge courbes de Yang-Mills-Higgs}   
+\author{Simon-Raphael Fischer} 
+\date{30 June 2021} 
+%\date{Le lundi 31 mai 2021} 
+
+% zusaetzlich ist das usepackage{beamerthemeshadow} eingebunden 
+%\usepackage{beamerthemeIlmenau}
+%\usepackage{beamerthemeshadow}
+\usepackage{beamerthemeDarmstadt}
+
+%  \beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
+%  sorgt dafuer das die Elemente die erst noch (zukuenftig) kommen 
+%  nur schwach angedeutet erscheinen 
+\beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
+% klappt auch bei Tabellen, wenn teTeX verwendent wird\ldots
+
+\beamertemplatenavigationsymbolsempty %Damit sind die kleinen Navigationssymbole unten weg
+
+%\usesectionheadtemplate{}{}
+%\usesubsectionheadtemplate{}{}
+
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\bs{\begin{subequations}}
+\def\es{\end{subequations}}
+\def\ba#1\ea{\begin{align}#1\end{align}}
+\def\bes{\begin{equation*}}
+\def\ees{\end{equation*}}
+\def\bas#1\eas{\begin{align*}#1\end{align*}}
+
+
+\renewcommand{\qedsymbol}{}
+\theoremstyle{plain}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{proposition}[theorem]{Proposition}
+%\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remarks}
+\newtheorem*{idea}{Idea}
+\newtheorem*{motivation}{Motivation}
+\newtheorem*{summary}{Summary}
+\newtheorem*{situation}{Situation}
+\newtheorem*{lab}{Situation: Lie algebra bundles}
+\newtheorem*{question}{Question}
+\newtheorem*{fieldredefinition}{Field Redefinition}
+\newtheorem*{construction}{Construction}
+\newtheorem*{aim}{Aim}
+
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+%\newtheorem*{SecondIn}{Second Inequality}
+
+%mathrm mit mathup ersetzen, damit die font passt
+\renewcommand\familydefault{\sfdefault} %comment to see the difference
+\DeclareMathAlphabet      {\mathup}{OT1}{\familydefault}{m}{n}
+
+
+\begin{document}
+
+
+\begin{frame}
+\thispagestyle{empty}
+\titlepage
+\end{frame} 
+
+
+{
+\setbeamertemplate{footline}{}
+\begin{frame}
+\frametitle{Table of contents}
+\tableofcontents
+\end{frame} 
+}
+\section{Curved Yang-Mills-Higgs gauge theory}
+\subsection{Motivation}
+{
+\setbeamertemplate{footline}{}
+\begin{frame}{\textbf{Infinitesimal} gauge theory}
+\centering
+%\begin{tikzpicture}[>=latex]
+%\coordinate (a) at (0,0);
+%\coordinate (b) at (4,0);
+%\coordinate (c) at (0,-3);
+%\draw (-2,-3) node[left] {Lie algebra $\mathfrak{g}$}--(2,-3);
+%%\draw[dashed,->,postaction={
+    %%decorate,
+    %%decoration={
+        %%markings,
+        %%mark=at position 0.6 with \coordinate (x);
+    %%}
+%%}] plot[smooth] coordinates {(b) (3,-1) (1,-2) (c)};
+%%\draw (x) node[below right] {$f\circ g^{-1}$};
+%\draw[->,postaction={
+    %decorate,
+    %decoration={
+        %markings,
+        %mark=at position 0.6 with \coordinate (y);
+    %}
+%}] plot[smooth] coordinates {(a) (-.4,-.5) (-.1,-2) (c)};
+%\draw (y) node[left] {Gauge bosons $A$};
+%\draw[thick,->,postaction={
+    %decorate,
+    %decoration={
+        %markings,
+        %mark=at position 0.6 with \coordinate (z);
+    %}
+%}] plot[smooth] coordinates {(a) (2,.25) (3.5,0) (b)};
+%\draw (z) node[above] {$g$};
+%\fill (a) circle (1.5pt) node[above right] {$P$} (b) circle (1.5pt) node[above] {$g(P)$};
+%\draw (-.1,.1) circle (0.8) ++(185:0.8) node[right] {$U$};
+%\draw[very thick,rounded corners=3mm] (-1.5,0)--(-1.3,.5)--(-.8,1.2)--(0,1)--(1.5,1.2)--(1.75,.5)--(0.875,-.7)--(0,-1)--(-1,-.8)--cycle;
+%\draw (-1.5,0) node[right] {$M$};
+%\draw (3.9,-.1) circle (0.8);
+%\draw[very thick] (3,1)--(5.5,1)--(5,-1.3)--(2.5,-1.3)--cycle;
+%\draw (5.5,1) node[below left] {$R^n$};
+%\draw[ultra thin] (4,-.5)--++(.2,-1) node[below] {$g(U)$};
+%\end{tikzpicture}
+\begin{tikzpicture}
+\filldraw [fill=gray!10!white, draw=black] plot [smooth cycle] coordinates {(5,0.25) (6,0.35) (6.5, 0.2) (7,0.5) (7,1.65) (6.5,2.75) (5.8,2.75) (5.3,1.45) (4.8,0.85) } node at (6.2,1.7) {$(N, g)$} node at (6.2, 3.2) {Riemannian manifold};
+\path[->] (2.6,1.7) edge [bend left] node[above] {Higgs field} node[below] {$\Phi$} (5.0,1.7);
+%\filldraw [fill=gray!10!white, draw=black] plot [smooth cycle] coordinates {(1.0,.1)(1.5,.2)(2.8,.5)(2.9,1.5)(2.8,2.8)(1.4,2.5)(0.5,0.5)} node at (1.8,1.7) {$(M, \eta)$} node at (1.8, 3.2) {Spacetime};
+\filldraw [fill=gray!10!white, draw=black] (-0.2,.5) to[bend left] (1.3,2.85) to[bend left] (2.7,2) to[bend right] (1.8,.5) to[bend right] cycle node at (1.2,1.7) {$(M, \eta)$} node at (1.2, 3.2) {Spacetime};
+\path[->] (0.7,0.5) edge [bend right] node[left] {$A \in \Omega^1$} node[right] {Gauge bosons} (0.7, -1.5);
+\filldraw [fill=gray, draw=black] (5.2, .7) circle (0.2);
+\path[->] (2.5,-1.5) edge [bend right] node[right] {action $\gamma$} (5.2, .7);
+\draw (-0.2,-1.7)-- (1.25, -1.7) node[below] {Lie algebra $\mathfrak{g}$} --(2.7,-1.7);
+%\draw node at () {$\mathfrak{g}$};
+%\draw node at (0,0.15) {$A \in \Omega^1$};
+%\end{tikzpicture}
+%\hspace*{11em}\raisebox{8em}{
+%%\begin{flushright}
+%\begin{tikzpicture}
+\tikzset{shift={(5,-3)}} %Change position of the next drawing
+\begin{axis}[ scale = 0.6,
+            hide axis,
+            %axis lines=middle,
+%            axis on top,
+%            axis line style={blue,dashed,thick},
+%            ymin=-2,ymax=2,
+%            xmin=-2,xmax=2,
+%            zmin=-2,zmax=2,
+            samples=40,
+            domain=0:360,
+            y domain=0:1.25,clip=false
+        ]
+        \addplot3 [surf, shader=flat, draw=black, fill=gray!10!white, z buffer=sort]
+           ({sin(x)*y}, {cos(x)*y}, {(y^2-1)^2});
+        \draw[blue,thick,dashed] (axis cs:0,0,0) -- (axis cs:1,0,0)
+                    node[below,font=\footnotesize]{};
+        \draw[blue,thick,-stealth] (axis cs:1,0,0) -- (axis cs:1.3,0,0)
+                    node[above,font=\footnotesize]{};
+        \draw[blue,thick,dashed] (axis cs:0,0,0) -- (axis cs:0,-1,0)
+                    node[left=2mm,font=\footnotesize]{}; %{Label} am Ende 
+        \draw[blue,thick,-stealth] (axis cs:0,-1,0) -- (axis cs:0,-1.5,0)
+                    node[right=1mm,font=\footnotesize]{};
+        \draw[blue,thick,dashed] (axis cs:0,0,0) -- (axis cs:0,0,1)
+                    %node[left=2mm,font=\footnotesize]{$\phi_{\text{RE}}$}
+                    ;
+        \draw[blue,thick,-stealth] (axis cs:0,0,1) -- (axis cs:0,0,1.3)
+                    node[right,font=\footnotesize]{$\mathcal{V}$};
+        \end{axis}
+\end{tikzpicture}
+%\end{flushright}
+\end{frame}
+
+\begin{frame}{Guide: Curved Yang-Mills-Higgs gauge theory}
+\setbeamercovered{invisible}
+\begin{table}[h!]
+		\begin{tabularx}{\textwidth}{X X}
+			\rowcolor{gray}
+			Classical formalism & CYMH GT \\
+			Lie algebra $\mathfrak{g}$ as $M \times \mathfrak{g}$ & Lie algebroid $E \to N$ \\
+			\rowcolor{Gray}
+			$\mathfrak{g}$-action $\gamma$ & Anchor $\rho$ of $E$ \\ 
+			\rowcolor{Gray}
+			& \& $E$-connections \\
+			Canonical flat connection $\nabla^0$ on $M \times \mathfrak{g}$ & General connection $\nabla$ on $E$
+		\end{tabularx}
+\end{table}
+\pause
+\begin{remark}[Why a "curved theory"?]
+Usually, the field strength $F$ is given by (abelian, for simplicity)
+\bas
+F
+&\coloneqq
+\mathrm{d}A
+=
+\mathrm{d}^{\nabla^0}A.
+\eas
+$\rightsquigarrow$ We will use a general connection $\nabla$ instead of $\nabla^0$, and $\nabla$ may not be flat.
+\end{remark}
+\end{frame}
+}
+
+\subsection{Mathematical basics}
+
+\renewcommand\insertreferences{{\tiny Ana Cannas Da Silva, Alan Weinstein. \textit{Geometric models for noncommutative algebras}, \newline volume 10. American Mathematical Society, 1999.}}
+
+\begin{frame}
+%Instead of Lie algebras we want to use:
+\begin{definition}[Lie algebroids]
+Let $E \to N$ be a vector bundle. Then $E$ is a Lie algebroid, if there is a bundle map $\rho: E \to \mathrm{T}N$, called the \textbf{anchor}, and a Lie algebra structure on $\Gamma(E)$ with Lie bracket $\mleft[\cdot, \cdot\mright]_E$ satisfying
+\ba
+  \mleft[\mu, f \nu\mright]_E = f \mleft[\mu, \nu\mright]_E + \mathcal{L}_{\rho(\mu)}(f) ~ \nu
+\label{eq:E-Leibniz}
+\ea
+for all $f \in C^\infty(N)$ and $\mu, \nu \in \Gamma(E)$.
+\end{definition}
+\pause
+\begin{example}
+\begin{itemize}[<+->]
+	\item $E = \mathrm{T}N$, $\rho = \mathds{1}_{\mathrm{T}N}$
+	\item $E$ a bundle of Lie algebras, $\rho = 0$
+\end{itemize}
+\end{example}
+\end{frame}
+
+\renewcommand\insertreferences{{\tiny Yvette Kosmann-Schwarzbach and Franco Magri. Poisson-Nijenhuis structures. \newline \textit{In Annales de l’IHP Physique théorique}, volume 53, pages 35–81, 1990.}}
+
+\begin{frame}
+As for an action $\gamma: \mathfrak{g} \to \mathfrak{X}(N)$ we have:
+\begin{proposition}[Anchor as homomorphism]
+$\rho: \Gamma(E) \to \mathfrak{X}(N)$ is a homomorphism of Lie algebras.
+\end{proposition}
+\end{frame}
+
+\renewcommand\insertreferences{{\tiny Ana Cannas Da Silva, Alan Weinstein. \textit{Geometric models for noncommutative algebras}, \newline volume 10. American Mathematical Society, 1999.}}
+
+\begin{frame}
+The classical formalism will correspond to:
+\begin{proposition}[Action Lie algebroids]
+Let $\mleft(\mathfrak{g}, \mleft[\cdot, \cdot \mright]_{\mathfrak{g}}\mright)$ be a Lie algebra with a $\mathfrak{g}$-action $\gamma$ on $N$. Then there is a \textbf{unique} Lie algebroid structure on $E \coloneqq N \times \mathfrak{g}$ as a vector bundle over $N$ such that
+\ba
+\rho(\nu)
+&=
+\gamma(\nu),
+\\
+\mleft[\mu, \nu\mright]_E
+&=
+\mleft[\mu, \nu\mright]_{\mathfrak{g}}
+\ea
+for all constant sections $\mu, \nu \in \Gamma(E)$.
+\end{proposition}
+\end{frame}
+
+{
+\setbeamertemplate{footline}{}
+\begin{frame}
+\begin{table}[h!]
+		\begin{tabularx}{\textwidth}{X X}
+			\rowcolor{gray}
+			Classical formalism & CYMH GT \\
+			Lie algebra $\mathfrak{g}$ as $M \times \mathfrak{g}$ & Lie algebroid $E \to N$ \\
+			\rowcolor{Gray}
+			$\mathfrak{g}$-action $\gamma$ & Anchor $\rho$ of $E$ \\ 
+			\rowcolor{Gray}
+			& \& \textbf{$E$-connections} as lift of $\rho$ \\
+			Canonical flat connection $\nabla^0$ on $M \times \mathfrak{g}$ & General connection $\nabla$ on $E$
+		\end{tabularx}
+\end{table}
+			%\newline
+			\pause
+		$\rightsquigarrow$ $E$-connections similar to vector bundle connections but Leibniz rule along $\rho$, \textit{i.e.}~only lifting vector fields in the image of $\rho$
+\end{frame}
+}
+
+\renewcommand\insertreferences{{ Mohamed Boucetta. Riemannian geometry of Lie algebroids. \newline \textit{Journal of the Egyptian Mathematical Society}, 19(1-2):57–70, 2011. }}
+
+\begin{frame}
+\begin{example}[$E$-connection ${}^E\nabla$ on $V$]
+$\nabla^\prime$ a vector bundle connection on $V \to N$, then
+\ba
+{}^E\nabla_\nu v
+&\coloneqq
+\nabla^\prime_{\rho(\nu)} v
+\ea
+for all $\nu \in \Gamma(E)$ and $v \in \Gamma(V)$. In short denoted by $\nabla^\prime_\rho$.
+\end{example}
+\end{frame}
+
+\renewcommand\insertreferences{{\tiny Camilo Arias Abad, Marius Crainic. Representations up to homotopy of Lie algebroids. \newline \textit{Journal für die reine und angewandte Mathematik (Crelles Journal)}, 2012(663):91–126, 2012.}}
+
+\begin{frame}
+\begin{example}
+For $\nabla$ a connection on $E$ we have the \textbf{basic connection} given as a pair of $E$-connections on $E$ and on $\mathrm{T}N$ by
+\ba
+\nabla^{\mathrm{bas}}_\nu \mu
+&\coloneqq
+\mleft[ \nu, \mu \mright]_E
+	+ \nabla_{\rho(\mu)} \nu,
+\\
+\nabla^{\mathrm{bas}}_\nu X
+&\coloneqq
+\mleft[ \rho(\nu), X \mright]
+	+ \rho\mleft(\nabla_{X} \nu\mright)
+\ea
+for all $X \in \mathfrak{X}(N)$ and $\nu, \mu \in \Gamma(E)$.
+\end{example}
+\pause
+\begin{remark}[Encoding of Lie algebra representations]
+Test this with trivial bundles and canonical flat connection $\nabla^0$, \textit{i.e.}~$E = N \times \mathfrak{g}$ and $\nabla^0 \nu = 0$ for constant sections $\nu$.
+\end{remark}
+\end{frame}
+
+%\renewcommand\insertreferences{{\tiny Camilo Arias Abad, Marius Crainic. Representations up to homotopy of Lie algebroids. \newline \textit{Journal für die reine und angewandte Mathematik (Crelles Journal)}, 2012(663):91–126, 2012.}}
+\begin{frame}
+\begin{definition}[Basic curvature]
+Let $\nabla$ be a connection on $E$.
+The \textbf{basic curvature $R_\nabla^{\mathrm{bas}}$} is defined as an element of $\Gamma\left(\bigwedge^2E^* \otimes \mathrm{T}^*N \otimes E \right)$ by
+\ba
+R^{\mathrm{bas}}_\nabla(\mu, \nu) X
+&\coloneqq
+\nabla_X\mleft(\mleft[\mu, \nu\mright]_E\mright) 
+	- \mleft[ \nabla_X \mu, \nu \mright]_E 
+	- \mleft[ \mu, \nabla_X \nu \mright]_E 
+\nonumber\\
+&\hspace{1cm}
+	- \nabla_{\nabla^{\mathrm{bas}}_\nu X} \mu 
+	+ \nabla_{\nabla^{\mathrm{bas}}_\mu X} \nu,
+\ea
+where $\mu, \nu \in \Gamma(E)$ and $X \in \mathfrak{X}(N)$.
+\end{definition}
+
+\pause
+\begin{proposition}
+We recover the curvature of the basic connection:
+\ba
+R_{\nabla^{\mathrm{bas}}}
+&=
+\mleft\{
+\begin{array}{ll}
+- R_\nabla^{\mathrm{bas}}(\cdot, \cdot) \circ \rho, & \text{on $E$}, \\
+- \rho \circ R_\nabla^{\mathrm{bas}}, & \text{on $\mathrm{T}N$}.
+\end{array}
+\mright.
+\ea
+\end{proposition}
+\end{frame}
+
+\subsection{Curved Yang-Mills-Higgs gauge theory}
+
+{
+\makeatletter
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.09\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}
+		Sources
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.91\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}
+		Alexei Kotov and Thomas Strobl. Curving Yang-Mills-Higgs gauge theories. \textit{Physical Review D}, 92(8):085032, 2015.
+  \end{beamercolorbox}%
+  %\begin{beamercolorbox}[wd=.175\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    %\usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+    %%\insertframenumber{} 
+		%%/ \inserttotalframenumber\hspace*{2ex} 
+  %\end{beamercolorbox}
+	}%
+  \vskip0pt%
+}
+\begin{frame}
+\begin{definition}[Space of fields]
+Fields are a pair consisting of:
+\begin{itemize}[<+->]
+	\item Higgs field $\Phi \in C^\infty(M;N)$
+	\item Field of gauge bosons $A \in \Omega^1(M; \Phi^*E)$
+\end{itemize}
+\end{definition}
+%\end{frame}
+\pause
+%\begin{frame}
+\begin{definition}[Minimal coupling]
+\textbf{Minimal coupling} $\mathfrak{D}$, $(\Phi, A) \mapsto \mathfrak{D}(\Phi, A) \in \Omega^1(M; \Phi^*\mathrm{T}N)$, by
+\ba
+\mathfrak{D}(\Phi, A)
+&\coloneqq
+\mathfrak{D}^A \Phi
+\coloneqq
+\mathrm{D}\Phi
+	- (\Phi^*\rho)(A),
+\ea
+where $\mathrm{D}\Phi: \mathrm{T}M \to \mathrm{T}N$ is the tangent map.
+\end{definition}
+\end{frame}
+
+\begin{frame}
+\setbeamercovered{invisible}
+\begin{definition}[Field strength]
+Let $\nabla$ be a connection on $E$. We define the \textbf{field strength $F$}, $(\Phi, A) \mapsto F(\Phi, A) \in \Omega^2(M; \Phi^*E)$, by
+\ba
+F(\Phi, A)
+\coloneqq
+\mathrm{d}^{\Phi^*\nabla} A
+	+ \frac{1}{2} \mleft( \Phi^* t_{\nabla^{\mathrm{bas}}} \mright)\mleft( A \stackrel{\wedge}{,} A \mright),
+\ea
+where $t_{\nabla^{\mathrm{bas}}}$ is the torsion of $\nabla^{\mathrm{bas}}$ on $E$ and $\mathrm{d}^{\Phi^*\nabla}$ the exterior covariant derivative of $\Phi^*\nabla$.
+\end{definition}
+\pause
+\begin{definition}[Generalised field strength]
+Let $\zeta$ be an element of $\Omega^2(N; E)$, then we define the \textbf{generalised field strength $G$} by
+\ba
+G(\Phi,A)
+&\coloneqq
+F(\Phi, A)
+	+ \frac{1}{2} (\Phi^*\zeta)\mleft( \mathfrak{D}^A \Phi \stackrel{\wedge}{,} \mathfrak{D}^A \Phi \mright).
+\ea
+\end{definition}
+\end{frame}
+
+\begin{frame}
+\begin{definition}[Curved Yang-Mills-Higgs (CYMH) Lagrangian]
+Let $\kappa$ be a fibre metric on $E$, then the \textbf{curved Yang-Mills-Higgs Lagrangian $\mathfrak{L}_{\mathrm{CYMH}}$}, $(\Phi, A) \mapsto \mathfrak{L}_{\mathrm{CYMH}}(\Phi, A) \in \Omega^{\mathrm{dim}(M)}(M)$, is defined by
+\ba
+\mathfrak{L}_{\mathrm{CYMH}}(\Phi, A)
+&\coloneqq
+- \frac{1}{2} \mleft( \Phi^*\kappa \mright)\mleft(G(\Phi, A) \stackrel{\wedge}{,} *G(\Phi, A) \mright)
+\nonumber \\
+&\hspace{1cm}
+	+ \mleft( \Phi^*g \mright)\mleft(\mathfrak{D}^A \Phi \stackrel{\wedge}{,} *\mathfrak{D}^A \Phi \mright)
+	- *(\Phi^*\mathcal{V}),
+\ea
+where $*$ is the Hodge star operator related to the spacetime metric $\eta$.
+\end{definition}
+\end{frame}
+
+%Add slide about the aim of CYMH GT
+
+\begin{frame}
+\begin{definition}[CYMH GT]
+Assume we have additionally the \textbf{compatibility conditions}
+\ba
+	R_\nabla + \mathrm{d}^{\nabla^{\mathrm{bas}}} \zeta &= 0,\label{EqMyFormulationOfZetaCondition} \\
+	R_\nabla^{\mathrm{bas}} &= 0, \label{VanishingBasicCurvComp} \\
+	\nabla^{\mathrm{bas}} \kappa &= 0, \\
+	\nabla^{\mathrm{bas}} g &= 0, \\
+	\mathcal{L}_\rho \mathcal{V} &= 0,
+\ea
+then we say that we have a \textbf{curved Yang-Mills-Higgs gauge theory}.
+\pause
+
+We say that we have a \textbf{pre-classical gauge theory}, if $\nabla$ is flat.
+\pause
+
+If we have additionally $\zeta \equiv 0$, then we say that we have a \textbf{classical gauge theory}.
+\end{definition}
+\end{frame}
+
+\begin{frame}{Summary}
+\begin{center}
+	\begin{tikzcd}[ampersand replacement=\&, column sep=small]
+		\Phi^*E \arrow{d} \& (E, \mleft[ \cdot, \cdot \mright]_E, \kappa, \nabla) \arrow{d} \arrow{rd}{\rho} \\
+		M \arrow[r, "\Phi"] \& (N, g) \& \arrow{l} \mathrm{T}N \arrow[lu, bend right, swap, "\zeta \in \Omega^2"] 
+	\end{tikzcd}
+\end{center}
+
+$\rightsquigarrow$ Together with the compatibility conditions we  will have gauge invariance, that is,
+\ba
+\delta_\varepsilon \mathfrak{L}_{\mathrm{CYMH}}
+&=
+0.
+\ea
+\end{frame}
+}
+
+\section{Field Redefinition}
+\subsection{General definition}
+{
+\setbeamertemplate{footline}{}
+
+\begin{frame}
+\begin{motivation}
+\begin{itemize}[<+->]
+	\item Are there CYMH GTs which are neither pre-classical nor classical?
+	\item Difficulty: There is an equivalence relation of CYMH GTs keeping the same Lagrangian and preserving the physics, possibly turning theories into (pre-)classical ones. 
+	\newline
+	
+	This was provided by Edward Witten in a private communication with Thomas Strobl about a specific example of a CYMH GT.
+\end{itemize}
+\end{motivation}
+\end{frame}
+
+\begin{frame}
+\begin{definition}[Field redefinition, {[S.-R. F.]}]
+Let $\lambda \in \Omega^1(N; E)$ such that $\Lambda \coloneqq \mathds{1}_E - \lambda \circ \rho$ is an automorphism of $E$. We then define the \textbf{field redefinitions} by 
+\ba\label{EqFieldRedefFuerA}
+\widetilde{A}^\lambda
+&\coloneqq 
+\mleft( \Phi^* \Lambda \mright) (A)+ \Phi^! \lambda,
+\\
+\widetilde{\nabla}^\lambda
+&\coloneqq
+\nabla
+	+ \mleft( \Lambda \circ \mathrm{d}^{\nabla^{\mathrm{bas}}} \circ \Lambda^{-1} \mright) \lambda,
+\label{FieldTrafoOfNabla} \\
+\widetilde{\kappa}^\lambda
+&\coloneqq
+\kappa \circ \mleft( \Lambda^{-1}, \Lambda^{-1} \mright),
+\label{FieldTrafoOfKappa} \\
+\widetilde{g}^\lambda
+&\coloneqq
+g \circ \mleft( \widehat{\Lambda}^{-1}, \widehat{\Lambda}^{-1} \mright), \label{FieldTrafoOfG}
+\ea
+where $\widehat{\Lambda} \coloneqq \mathds{1}_{\mathrm{T}N} - \rho \circ \lambda$, and for all $X, Y \in \mathfrak{X}(N)$ we also define
+\ba
+&\widetilde{\zeta}^\lambda\mleft(\widehat{\Lambda}(X),\widehat{\Lambda}(Y)\mright)
+\nonumber \\
+&\coloneqq
+\Lambda\bigl(
+	\zeta\mleft( X, Y \mright)
+\bigr)
+	- \mleft(\mathrm{d}^{\widetilde{\nabla}^\lambda} \lambda\mright)(X,Y)
+	+ t_{\widetilde{\nabla}^\lambda_\rho}(\lambda(X), \lambda(Y)).
+\ea
+\end{definition}
+\end{frame}
+
+\begin{frame}
+\begin{proposition}[{[S.-R. F.]}]
+\begin{itemize}
+	\item Field redefinitions define an equivalence relation of CYMH gauge theories
+	\item $\widetilde{\mathfrak{L}}^\lambda_{\mathrm{CYMH}} = \mathfrak{L}_{\mathrm{CYMH}}$
+\end{itemize}
+\end{proposition}
+%\vfill
+\pause
+Let us now apply a field redefinition in order to study whether $\nabla$ and $\zeta$ can become flat and zero, respectively.
+\end{frame}
+}
+
+\subsection{Lie algebra bundles}
+
+{
+\setbeamertemplate{footline}{}
+\begin{frame}{What happens in the case of Lie algebra bundles?}
+\begin{example}[Lie algebra bundles (LABs)]
+\begin{itemize}[<+->]
+	\item $E = \mathcal{g}$ an LAB ($\rho \equiv 0$) with a field of Lie brackets $\mleft[ \cdot, \cdot \mright]_{\mathcal{g}} \in \Gamma\mleft( \bigwedge^2{\mathcal{g}}^* \otimes {\mathcal{g}} \mright)$ which restricts to the bracket of a given Lie algebra $\mathfrak{g}$
+\end{itemize}
+\pause
+Compatibilities:
+\begin{itemize}[<+->]
+	\item $\kappa$ needs to be $\mathrm{ad}$-invariant
+	\item We need
+\ba
+\nabla_Y\mleft( \mleft[ \mu, \nu \mright]_{\mathcal{g}} \mright)
+&=
+\mleft[ \nabla_Y \mu, \nu \mright]_{\mathcal{g}}
+	+ \mleft[ \mu, \nabla_Y \nu \mright]_{\mathcal{g}}, \\
+R_\nabla(Y, Z) \mu
+&=
+\mleft[ \zeta(Y, Z), \mu \mright]_{\mathcal{g}}
+\ea
+for all $Y, Z \in \mathfrak{X}(N)$ and $\mu, \nu \in \Gamma({\mathcal{g}})$.
+\end{itemize}
+\end{example}
+\end{frame}
+\begin{frame}
+\begin{theorem}[Invariant for LABs, {[S.-R. F.]}]
+We have
+\ba	
+\mathrm{d}^{\widetilde{\nabla}^\lambda} \widetilde{\zeta}^\lambda = \mathrm{d}^\nabla \zeta,
+\ea
+and $\mathrm{d}^\nabla \zeta$ has values in the centre of ${\mathcal{g}}$.
+\end{theorem}
+\end{frame}
+
+\begin{frame}{Behaviour of the field redefinition of $\zeta$}
+\begin{theorem}[Existence of non-classical theories, {[S.-R. F.]}]
+If $\mathrm{d}^\nabla \zeta \neq 0$, then there is no field redefinition such that $\widetilde{\zeta}^\lambda = 0$.
+\end{theorem}
+\pause
+\begin{remark}
+Starting with a classical theory:
+
+If $\mathrm{dim}(N) \geq 3$ and if Lie algebra $\mathfrak{g}$ has a non-zero centre, then we can always construct a pre-classical CYMH GT which is not a classical one by adding a $\zeta$ with $\mathrm{d}^\nabla \zeta \neq 0$.
+\end{remark}
+\pause
+However, by $R_\nabla = \mathrm{ad}_{\mathcal{g}} \circ \zeta$ it may still be that $\nabla$ becomes flat.
+\end{frame}
+
+\begin{frame}{Turning to the field redefinition of $\nabla$:}
+\begin{theorem}[Differential on centre-valued forms, {[S.-R. F.]}]
+$\nabla$ restricts to the centre of ${\mathcal{g}}$ and induces a differential $\mathrm{d}^\Xi$ on centre-valued forms. Moreover, $\mathrm{d}^\Xi$ is independent of the field redefinitions.
+\end{theorem}
+\pause
+\begin{proof}[Sketch of proof]
+Recall
+\bas
+\nabla_Y\mleft( \mleft[ \mu, \nu \mright]_{\mathcal{g}} \mright)
+&=
+\mleft[ \nabla_Y \mu, \nu \mright]_{\mathcal{g}}
+	+ \mleft[ \mu, \nabla_Y \nu \mright]_{\mathcal{g}}, \\
+R_\nabla(Y, Z) \mu
+&=
+\mleft[ \zeta(Y, Z), \mu \mright]_{\mathcal{g}}, \\
+\widetilde{\nabla}^\lambda_Y \mu
+&=
+\nabla_Y \mu
+- \mleft[\lambda(Y), \mu\mright]_{\mathcal{g}},
+\eas
+for all $Y, Z \in \mathfrak{X}(N)$ and $\mu, \nu \in \Gamma({\mathcal{g}})$. Then insert $\mu$ with values in the centre.
+\end{proof}
+\end{frame}
+
+\begin{frame}
+\begin{theorem}[Closedness of $\mathrm{d}^\nabla \zeta$, {[S.-R. F.]}]
+We have
+\ba
+\mathrm{d}^\Xi \mathrm{d}^\nabla \zeta
+&=
+0.
+\ea
+\end{theorem}
+\pause
+\begin{definition}[Obstruction class, {[S.-R. F.]}]
+We define the \textbf{obstruction class} by
+\ba
+\mathrm{Obs}(\Xi)
+&\coloneqq
+\mleft[ \mathrm{d}^\nabla \zeta \mright]_{\mathrm{d}^\Xi}.
+\ea
+\end{definition}
+\pause
+\begin{proposition}[{[S.-R. F.]}]
+\begin{itemize}[<+->]
+	\item An invariant of the field redefinitions.
+	\item If $\nabla$ flat, then $\mathrm{Obs}(\Xi) = 0$.
+\end{itemize}
+\end{proposition}
+\end{frame}
+}
+
+{
+\setbeamertemplate{footline}{}
+\begin{frame}
+\begin{theorem}[Obstruction for non-pre-classical theories, {[S.-R. F.]}]
+If $\mathrm{Obs}(\Xi) \neq 0$, then there is no field redefinition such that $\widetilde{\nabla}^\lambda$ is flat.
+\end{theorem}
+\pause
+\begin{theorem}[Locally always pre-classical]
+If $N$ is contractible, then there is a field redefinition such that $\widetilde{\nabla}^\lambda$ is flat.
+\end{theorem}
+\pause
+\begin{remark}
+Second theorem follows as a result by K.~Mackenzie (General Theory of Lie Groupoids and Algebroids. \textit{London Mathematical Society Lecture Note Series}, 213, 2005). Mackenzie derived $\mathrm{Obs}(\Xi)$ in the context of extending Lie algebroids by LABs.
+\end{remark}
+\end{frame}
+}
+
+\renewcommand\insertreferences{{\tiny  K. Mackenzie. General Theory of Lie Groupoids and Algebroids. \newline \textit{London Mathematical Society Lecture Note Series}, 213, 2005.}}
+
+\begin{frame}
+\begin{example}[Zero obstruction class not necessarily pre-classical]
+Let $P$ be the Hopf fibration
+\begin{center}
+	\begin{tikzcd}[ampersand replacement=\&, column sep=small]
+		\mathrm{SU}(2) \arrow{r}	\& \mathds{S}^7 \arrow{d} \\
+			\& \mathds{S}^4
+	\end{tikzcd}
+\end{center}
+Then for the adjoint bundle
+\bas
+{\mathcal{g}}
+&\coloneqq
+P \times_{\mathrm{SU}(2)} \mathfrak{su}(2)
+\coloneqq 
+\mleft( \mathds{S}^7 \times \mathfrak{su}(2) \mright) \Big/ \mathrm{SU}(2)
+\eas
+we have a non-flat $\nabla$ satisfying the compatibility conditions such that all of its field redefinitions are not flat either, but $\mathrm{Obs}(\Xi) = 0$.
+\end{example}
+\end{frame}
+
+{
+\setbeamertemplate{footline}{}
+\begin{frame}{Summary}
+\begin{remark}
+Locally, LABs are always pre-classical but not necessarily classical. 
+
+In general, $\mathrm{Obs}(\Xi)=0$ does not imply a flat connection.
+\end{remark}
+\pause
+
+So, what actually happens in the adjoint bundle of $\mathds{S}^7 \to \mathds{S}^4$? 
+
+$\rightsquigarrow$ Integration
+\end{frame}
+}
+\section{Integration (WIP)}
+
+{
+\setbeamertemplate{footline}{}
+
+\begin{frame}{Idea}
+	\begin{remark}
+		Observe that the Higgs field $\Phi$ doesn't really matter at all in the case of LABs
+		
+		$\rightsquigarrow$ Think in terms of bundles over $M$ directly
+	\end{remark}
+	
+\pause
+\begin{table}[h!]
+		\begin{tabularx}{\textwidth}{X| c c} 
+			\rowcolor{gray}
+			& Classical & Curved \\ \hline
+			Infinitesimal & Lie algebra $\mathfrak{g}$ & LAB $\mathcal{g}$ \\
+			\rowcolor{Gray}
+			Integrated & Lie group $G$ & \textcolor[rgb]{0,0.33,0}{LGB\footnote{LGB = Lie group bundle} $\mathcal{G}$?} \\
+		\end{tabularx}
+\end{table}
+
+\begin{center}
+	\begin{tikzcd}[ampersand replacement=\&]
+	G \arrow{r} \& \mathcal{G} \arrow{d}{\pi} \\
+	\& M
+	\end{tikzcd}
+\end{center}
+
+\end{frame}
+}
+
+\begin{frame}{LGB actions}
+\begin{definition}
+\begin{center}
+	\begin{tikzcd}[ampersand replacement=\&, column sep = small, row sep = small]
+	\& \mathcal{G} \arrow{d}{\pi} \\
+	N \arrow{r}{f} \& M
+	\end{tikzcd}
+\end{center}
+A \textbf{right-action of $\mathcal{G}$ on $N$} is a smooth map 
+%\bas
+$N * \mathcal{G} \coloneqq f^*\mathcal{G} \to N$,
+$(p, g) \mapsto p \cdot g$,
+%\eas
+satisfying the following properties:
+\ba\label{InvarianceOffUnderGAction}
+f(p \cdot g) &= \pi(g),\\
+(p \cdot g) \cdot h &= p \cdot (gh),\\
+p \cdot e_{f(p)} &= p
+\ea
+for all $p \in N$ and $g, h \in \mathcal{G}_{f(p)}$, where $e_{f(p)}$ is the neutral element of $\mathcal{G}_{f(p)}$.
+\end{definition}
+\end{frame}
+
+\section{Conclusion}
+{
+\setbeamertemplate{footline}{}
+\begin{frame}{Summary: When are theories flat?}
+\begin{table}[h!]
+		\begin{tabularx}{\textwidth}{X| c c} 
+			\rowcolor{gray}
+			& Locally & Globally \\ \hline
+			LABs & Pre-classical & $\mathrm{ad}(\mathds{S}^7 \to \mathds{S}^4)$ curved \\
+			\rowcolor{Gray}
+			Tangent bundles & Pre-classical & $\mathrm{T}\mathds{S}^7$ curved \\
+		\end{tabularx}
+\end{table}
+\begin{remark}
+What about general Lie algebroids? Find an invariant like $\mathrm{d}^\nabla \zeta$
+
+$\rightsquigarrow$ $\mathrm{d}^\nabla \zeta$ measures the failure of the Bianchi identity of $G$
+
+$\rightsquigarrow$ Generalised Bianchi identity?
+\end{remark}
+\end{frame}
+
+\begin{frame}{Hope: Structural Lie groupoids}
+%\begin{table}[h!]
+		%\begin{tabularx}{\textwidth}{X| c c} 
+			%\rowcolor{gray}
+			%Gauge theory & Minimal coupling evolves around... \\ \hline
+			%Yang-Mills & $\mathrm{GL}(V) \curvearrowright V$ \\
+			%& $V$ vector space \\
+			%\rowcolor{Gray}
+			%Curved Yang-Mills & $\mathrm{Aut}_{\mathrm{base}}(V) \curvearrowright V$ \\ 
+			%\rowcolor{Gray}
+			%& $V$ vector bundle, $\mathrm{Aut}_{\mathrm{base}}$ base-preserving \\
+			%Curved Yang-Mills-Higgs & $\mathrm{Aut}_{\neg\mathrm{base}}(V) \curvearrowright V$ \\
+			%& $V$ vector bundle, $\mathrm{Aut}_{\mathrm{base}}$ base-preserving
+		%\end{tabularx}
+%\end{table}
+\begin{table}[h!]
+		\begin{tabularx}{\textwidth}{X| c c} 
+			\rowcolor{gray}
+			Gauge theory & Structure \\ \hline
+			Yang-Mills & Lie group $G$ \\
+			\rowcolor{Gray}
+			Curved Yang-Mills & Lie group bundle $\mathcal{G}$ \\ 
+			Curved Yang-Mills-Higgs & Lie groupoid $\mathfrak{G}$?
+		\end{tabularx}
+\end{table}
+
+\begin{center}
+	\begin{tikzcd}[ampersand replacement=\&, column sep=small]
+		\& \arrow{ld} \mathfrak{G} \arrow{rd} \& \\
+		M \arrow{rr}{\Phi} \& \& N
+	\end{tikzcd}
+\end{center}
+\end{frame}
+}
+\thispagestyle{empty}
+\topmargin -3.46 cm
+\vspace*{\fill}
+\begin{center}
+\huge \textbf{Thank you!}
+\end{center}
+\vspace*{\fill}
+
+\end{document}
+

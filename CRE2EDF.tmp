@@ -1,0 +1,1909 @@
+\documentclass[hyperref={pdfpagelabels=false}]{beamer}
+
+\usepackage[english]{babel}
+\usepackage{xcolor}
+\usepackage{lmodern}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+%\usepackage{mathabx}
+\usepackage{stmaryrd}
+\usepackage{amsbsy}
+\usepackage{dsfont}
+\usepackage{mathtools} %für mathclap und coloneqq
+%\usepackage{amsbsy}
+\usepackage{mleftright} %Distanz zu \left \right weg
+\usepackage{tikz-cd}
+
+\usepackage{tabularx} %Automatic line break of tables using X instead c l r
+%\usepackage{longtable} %table auf mehreren Seiten
+%\usepackage{ltxtable} %Combination of both above
+\usepackage{xcolor, colortbl}
+
+%Für die ganzen Diagramme
+\usepackage{pgfplots}
+\usepackage{graphicx} %Für raisebox, vertical displacement of figures
+\usetikzlibrary{decorations.markings}
+
+\definecolor{Gray}{gray}{0.85}
+%\usepackage[style=authortitle-icomp]{biblatex}
+%\usepackage[babel,german=guillemets]{csquotes}
+
+%\setcounter{tocdepth}{4}
+%\setcounter{tocdepth}{5}
+%\setcounter{secnumdepth}{4}
+%\setcounter{secnumdepth}{5}
+\usepackage[backend=biber, style=numeric]{biblatex}
+\addbibresource{Literatur.bib}
+\newcommand{\footlineextra}[1]{
+    \begin{tikzpicture}[remember picture,overlay]
+        \node[yshift=2ex,anchor=south west] at (current page.south west) {\usebeamerfont{author in head/foot}\hspace{2ex}#1};
+    \end{tikzpicture}
+}
+%\DeclareMathOperator{\sAut}{\mathKel{A\mkern-5.5mu u\mkern-4mu t\mkern-1.5mu}}
+%\DeclareMathOperator{\saut}{\mathKel{a\mkern-4.5mu u\mkern-4mu t\mkern-1.5mu}}
+%\DeclareMathOperator{\sEnd}{\mathKel{E\mkern-4mu n\mkern-4.5mu d\mkern-1mu}}
+%\setbeamertemplate{bibliography entry title}{}
+%\setbeamertemplate{bibliography entry location}{}
+%\setbeamertemplate{bibliography entry note}{}
+%\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+%\pagestyle{headings}
+%
+%\makeatletter
+%\patchcmd{\beamer@calculateheadfoot}{\advance\footheight by 5pt}{\advance\footheight by 20pt}{}{}
+%\makeatother
+
+%\makeatletter
+%\setbeamertemplate{footline}
+%{
+  %\leavevmode%
+  %\hbox{%
+  %\begin{beamercolorbox}[wd=.175\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    %\usebeamerfont{author in head/foot}\insertshortauthor\expandafter\beamer@ifempty\expandafter{\beamer@shortinstitute}{}{~~(\insertshortinstitute)}
+  %\end{beamercolorbox}%
+  %\begin{beamercolorbox}[wd=.65\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    %\usebeamerfont{title in head/foot}\insertshorttitle
+  %\end{beamercolorbox}%
+  %\begin{beamercolorbox}[wd=.175\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    %\usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+    %%\insertframenumber{} 
+		%%/ \inserttotalframenumber\hspace*{2ex} 
+  %\end{beamercolorbox}}%
+  %\vskip0pt%
+%}
+%\makeatother 
+
+%\setbeamercolor{footlinecolor}{fg=white,bg=Navyblue}
+\newcommand\insertreferences{}
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.09\paperwidth, ht=5ex,dp=1ex,center, sep=1.4ex]{author in head/foot}%
+    \usebeamerfont{author in head/foot}
+		%\vfill
+		%Sources
+		%\vfill
+		Sources
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.91\paperwidth,ht=5ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}
+    \insertreferences
+
+  \end{beamercolorbox}
+}
+}
+
+%\setbeamertemplate{footline}
+%{
+  %\leavevmode%
+  %\hbox{%
+  %\begin{beamercolorbox}[wd=.09\paperwidth,ht=4.35ex,dp=20ex,center]{author in head/foot}%
+    %\usebeamerfont{author in head/foot}
+		%Source
+  %\end{beamercolorbox}%
+  %\begin{beamercolorbox}[wd=.91\paperwidth,ht=4.35ex,dp=20ex,center]{title in head/foot}%
+    %\usebeamerfont{title in head/foot}
+		%Camilo Arias Abad, Marius Crainic. Representations up to homotopy of Lie algebroids. \textit{Journal für die reine und angewandte Mathematik (Crelles Journal)}, 2012(663):91–126, 2012.
+  %\end{beamercolorbox}%
+  %%\begin{beamercolorbox}[wd=.175\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    %%\usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+    %%%\insertframenumber{} 
+		%%%/ \inserttotalframenumber\hspace*{2ex} 
+  %%\end{beamercolorbox}
+	%}%
+  %\vskip0pt%
+%}
+
+\title{Geometry of curved Yang-Mills-Higgs gauge theories}   
+%\title{Géométrie des théories de jauge courbes de Yang-Mills-Higgs}   
+\author{Simon-Raphael Fischer} 
+\date{30 June 2021} 
+%\date{Le lundi 31 mai 2021} 
+
+% zusaetzlich ist das usepackage{beamerthemeshadow} eingebunden 
+%\usepackage{beamerthemeIlmenau}
+%\usepackage{beamerthemeshadow}
+\usepackage{beamerthemeDarmstadt}
+
+%  \beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
+%  sorgt dafuer das die Elemente die erst noch (zukuenftig) kommen 
+%  nur schwach angedeutet erscheinen 
+\beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
+% klappt auch bei Tabellen, wenn teTeX verwendent wird\ldots
+
+\beamertemplatenavigationsymbolsempty %Damit sind die kleinen Navigationssymbole unten weg
+
+%\usesectionheadtemplate{}{}
+%\usesubsectionheadtemplate{}{}
+
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\bs{\begin{subequations}}
+\def\es{\end{subequations}}
+\def\ba#1\ea{\begin{align}#1\end{align}}
+\def\bes{\begin{equation*}}
+\def\ees{\end{equation*}}
+\def\bas#1\eas{\begin{align*}#1\end{align*}}
+
+
+\renewcommand{\qedsymbol}{}
+\theoremstyle{plain}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{proposition}[theorem]{Proposition}
+%\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remarks}
+\newtheorem*{idea}{Idea}
+\newtheorem*{motivation}{Motivation}
+\newtheorem*{summary}{Summary}
+\newtheorem*{situation}{Situation}
+\newtheorem*{lab}{Situation: Lie algebra bundles}
+\newtheorem*{question}{Question}
+\newtheorem*{fieldredefinition}{Field Redefinition}
+\newtheorem*{construction}{Construction}
+\newtheorem*{aim}{Aim}
+
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+%\newtheorem*{SecondIn}{Second Inequality}
+
+%mathrm mit mathup ersetzen, damit die font passt
+\renewcommand\familydefault{\sfdefault} %comment to see the difference
+\DeclareMathAlphabet      {\mathup}{OT1}{\familydefault}{m}{n}
+
+
+\begin{document}
+
+
+\begin{frame}
+\thispagestyle{empty}
+\titlepage
+\end{frame} 
+
+
+{
+\setbeamertemplate{footline}{}
+\begin{frame}
+\frametitle{Table of contents}
+\tableofcontents
+\end{frame} 
+}
+\section{Curved Yang-Mills-Higgs gauge theory}
+\subsection{Motivation}
+%\section{Physical situation}
+%
+%\begin{frame}
+%\begin{center}
+%\huge \textbf{Physical situation}
+%\end{center}
+%\end{frame}
+{
+\setbeamertemplate{footline}{}
+\begin{frame}{\textbf{Infinitesimal} gauge theory}
+\centering
+%\begin{tikzpicture}[>=latex]
+%\coordinate (a) at (0,0);
+%\coordinate (b) at (4,0);
+%\coordinate (c) at (0,-3);
+%\draw (-2,-3) node[left] {Lie algebra $\mathfrak{g}$}--(2,-3);
+%%\draw[dashed,->,postaction={
+    %%decorate,
+    %%decoration={
+        %%markings,
+        %%mark=at position 0.6 with \coordinate (x);
+    %%}
+%%}] plot[smooth] coordinates {(b) (3,-1) (1,-2) (c)};
+%%\draw (x) node[below right] {$f\circ g^{-1}$};
+%\draw[->,postaction={
+    %decorate,
+    %decoration={
+        %markings,
+        %mark=at position 0.6 with \coordinate (y);
+    %}
+%}] plot[smooth] coordinates {(a) (-.4,-.5) (-.1,-2) (c)};
+%\draw (y) node[left] {Gauge bosons $A$};
+%\draw[thick,->,postaction={
+    %decorate,
+    %decoration={
+        %markings,
+        %mark=at position 0.6 with \coordinate (z);
+    %}
+%}] plot[smooth] coordinates {(a) (2,.25) (3.5,0) (b)};
+%\draw (z) node[above] {$g$};
+%\fill (a) circle (1.5pt) node[above right] {$P$} (b) circle (1.5pt) node[above] {$g(P)$};
+%\draw (-.1,.1) circle (0.8) ++(185:0.8) node[right] {$U$};
+%\draw[very thick,rounded corners=3mm] (-1.5,0)--(-1.3,.5)--(-.8,1.2)--(0,1)--(1.5,1.2)--(1.75,.5)--(0.875,-.7)--(0,-1)--(-1,-.8)--cycle;
+%\draw (-1.5,0) node[right] {$M$};
+%\draw (3.9,-.1) circle (0.8);
+%\draw[very thick] (3,1)--(5.5,1)--(5,-1.3)--(2.5,-1.3)--cycle;
+%\draw (5.5,1) node[below left] {$R^n$};
+%\draw[ultra thin] (4,-.5)--++(.2,-1) node[below] {$g(U)$};
+%\end{tikzpicture}
+\begin{tikzpicture}
+\filldraw [fill=gray!10!white, draw=black] plot [smooth cycle] coordinates {(5,0.25) (6,0.35) (6.5, 0.2) (7,0.5) (7,1.65) (6.5,2.75) (5.8,2.75) (5.3,1.45) (4.8,0.85) } node at (6.2,1.7) {$(N, g)$} node at (6.2, 3.2) {Riemannian manifold};
+\path[->] (2.6,1.7) edge [bend left] node[above] {Higgs field} node[below] {$\Phi$} (5.0,1.7);
+%\filldraw [fill=gray!10!white, draw=black] plot [smooth cycle] coordinates {(1.0,.1)(1.5,.2)(2.8,.5)(2.9,1.5)(2.8,2.8)(1.4,2.5)(0.5,0.5)} node at (1.8,1.7) {$(M, \eta)$} node at (1.8, 3.2) {Spacetime};
+\filldraw [fill=gray!10!white, draw=black] (-0.2,.5) to[bend left] (1.3,2.85) to[bend left] (2.7,2) to[bend right] (1.8,.5) to[bend right] cycle node at (1.2,1.7) {$(M, \eta)$} node at (1.2, 3.2) {Spacetime};
+\path[->] (0.7,0.5) edge [bend right] node[left] {$A \in \Omega^1$} node[right] {Gauge bosons} (0.7, -1.5);
+\filldraw [fill=gray, draw=black] (5.2, .7) circle (0.2);
+\path[->] (2.5,-1.5) edge [bend right] node[right] {action $\gamma$} (5.2, .7);
+\draw (-0.2,-1.7)-- (1.25, -1.7) node[below] {Lie algebra $\mathfrak{g}$} --(2.7,-1.7);
+%\draw node at () {$\mathfrak{g}$};
+%\draw node at (0,0.15) {$A \in \Omega^1$};
+%\end{tikzpicture}
+%\hspace*{11em}\raisebox{8em}{
+%%\begin{flushright}
+%\begin{tikzpicture}
+\tikzset{shift={(5,-3)}} %Change position of the next drawing
+\begin{axis}[ scale = 0.6,
+            hide axis,
+            %axis lines=middle,
+%            axis on top,
+%            axis line style={blue,dashed,thick},
+%            ymin=-2,ymax=2,
+%            xmin=-2,xmax=2,
+%            zmin=-2,zmax=2,
+            samples=40,
+            domain=0:360,
+            y domain=0:1.25,clip=false
+        ]
+        \addplot3 [surf, shader=flat, draw=black, fill=gray!10!white, z buffer=sort]
+           ({sin(x)*y}, {cos(x)*y}, {(y^2-1)^2});
+        \draw[blue,thick,dashed] (axis cs:0,0,0) -- (axis cs:1,0,0)
+                    node[below,font=\footnotesize]{};
+        \draw[blue,thick,-stealth] (axis cs:1,0,0) -- (axis cs:1.3,0,0)
+                    node[above,font=\footnotesize]{};
+        \draw[blue,thick,dashed] (axis cs:0,0,0) -- (axis cs:0,-1,0)
+                    node[left=2mm,font=\footnotesize]{}; %{Label} am Ende 
+        \draw[blue,thick,-stealth] (axis cs:0,-1,0) -- (axis cs:0,-1.5,0)
+                    node[right=1mm,font=\footnotesize]{};
+        \draw[blue,thick,dashed] (axis cs:0,0,0) -- (axis cs:0,0,1)
+                    %node[left=2mm,font=\footnotesize]{$\phi_{\text{RE}}$}
+                    ;
+        \draw[blue,thick,-stealth] (axis cs:0,0,1) -- (axis cs:0,0,1.3)
+                    node[right,font=\footnotesize]{$\mathcal{V}$};
+        \end{axis}
+\end{tikzpicture}
+%\end{flushright}
+\end{frame}
+
+%\begin{frame}
+%\begin{remark}[Notation]
+	%\begin{itemize}[<+->]
+		%\item $(M, \eta)$ a spacetime
+		%%\pause
+		%\item $(N, g)$ a Riemannian manifold (serves as target of the Higgs field)
+		%%\pause
+		%%\item Lie algebra $\mathfrak{g}$ with scalar product $\kappa$
+		%%\pause
+		%%\item $\mathfrak{g}$-representation $\psi: \mathfrak{g} \to \mathup{End}(W)$ on $W$
+		%\item Potential $\mathcal{V} \in C^\infty(N)$
+		%\item \textbf{Infinitesimal} gauge theory (trivial principal bundles \textit{etc.})
+	%\end{itemize}
+%\end{remark}
+%%\footlineextra{Source: Mark JD Hamilton. \textit{Mathematical Gauge Theory}. Springer, 2017.}
+%\end{frame}
+
+%\begin{frame}
+%\setbeamercovered{transparent}
+
+
+%\begin{motivation}[Covariantization of infinitesimal gauge theory]
+	%\begin{enumerate}
+		%\item Lie algebra $\mathfrak{g}$ $\rightsquigarrow$ trivial $\mathfrak{g}$-bundle $E$
+		%%\pause
+		%%\item $x \in \mathfrak{g}$ $\rightsquigarrow$ constant section of $E$
+		%\pause
+		%\item Allow non-trivial $E$ (\textbf{COMMENT: Rewrite, that is nonsense})
+		%\pause
+		%\item Adjust definitions assuming a trivialisation like $\mathrm{d}A$ in the definition of the field strength, $A$ the field of gauge bosons
+		%\pause
+		%\newline $\Rightarrow$ Recall $\mathrm{d}A = \mathrm{d}^{\nabla^0}A$, with canonical flat connection $\nabla^0$
+		%%\pause
+		%%\item $\nabla^0 \rightsquigarrow$ general connection $\nabla$ 
+		%%\item $N \times \mathfrak{g} \rightsquigarrow$ Lie algebroid $E$
+	%\end{enumerate}
+%\end{motivation}
+%%\pause
+%%$\Rightarrow$ 
+%
+%\end{frame}
+
+\begin{frame}{Guide: Curved Yang-Mills-Higgs gauge theory}
+\setbeamercovered{invisible}
+%\begin{table*}
+	%\centering
+	%\LTXtable{\textwidth}{Replacement.tex}
+\begin{table}[h!]
+		\begin{tabularx}{\textwidth}{X X}
+			\rowcolor{gray}
+			Classical formalism & CYMH GT \\
+			Lie algebra $\mathfrak{g}$ as $M \times \mathfrak{g}$ & Lie algebroid $E \to N$ \\
+			\rowcolor{Gray}
+			$\mathfrak{g}$-action $\gamma$ & Anchor $\rho$ of $E$ \\ 
+			\rowcolor{Gray}
+			& \& $E$-connections \\
+			Canonical flat connection $\nabla^0$ on $M \times \mathfrak{g}$ & General connection $\nabla$ on $E$
+		\end{tabularx}
+\end{table}
+\pause
+\begin{remark}[Why a "curved theory"?]
+Usually, the field strength $F$ is given by (abelian, for simplicity)
+\bas
+F
+&\coloneqq
+\mathrm{d}A
+=
+\mathrm{d}^{\nabla^0}A.
+\eas
+$\rightsquigarrow$ We will use a general connection $\nabla$ instead of $\nabla^0$, and $\nabla$ may not be flat.
+\end{remark}
+	
+		%\begin{tabular}{|c|c|} \hline
+      %Classical formalism & CYMH GT  \\ \hline
+      %Canonical flat connection $\nabla^0$ & General connection $\nabla$ \pause \\
+			%Lie algebra $\mathfrak{g}$ & Lie algebroid $E$ \\ 
+			%$\mathfrak{g}$-action $\gamma$ on $N$ & Anchor $\rho$ of $E$ \pause \\
+			%$\mathfrak{g}$-representation on some vector space & ? \\ \hline
+      %\end{tabular}
+%\end{table*}
+\end{frame}
+
+
+%\subsection{Classical Yang-Mills-Higgs gauge theory}
+
+%{
+%\makeatletter
+%\setbeamertemplate{footline}
+%{
+  %\leavevmode%
+  %\hbox{%
+  %\begin{beamercolorbox}[wd=.09\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    %\usebeamerfont{author in head/foot}
+		%Sources
+  %\end{beamercolorbox}%
+  %\begin{beamercolorbox}[wd=.91\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    %\usebeamerfont{title in head/foot}
+		%Mark JD Hamilton. \textit{Mathematical Gauge Theory}. Springer, 2017.
+  %\end{beamercolorbox}%
+  %%\begin{beamercolorbox}[wd=.175\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    %%\usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+    %%%\insertframenumber{} 
+		%%%/ \inserttotalframenumber\hspace*{2ex} 
+  %%\end{beamercolorbox}
+	%}%
+  %\vskip0pt%
+%}
+
+%\subsection{Notation and conventions}
+
+%\begin{frame}
+%\begin{remark}
+%Every Lie algebra representation $\psi$ on a vector space $N = W$ defines a Lie algebra action $\gamma: \mathfrak{g} \to \mathfrak{X}(N)$ by
+%\ba
+%\gamma(X)|_v &\coloneqq - \psi(X)(v)
+%\ea
+%for all $X \in \mathfrak{g}$ and $v \in W$.
+%\end{remark}
+%\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{frame}
+%%\begin{situation}[Basics]
+	%%\begin{itemize}
+		%%\item Spacetime $M$ with spacetime metric $\eta$
+		%%%\pause
+		%%\item $N \coloneqq W$ a vector space with scalar product $g$
+		%%%\pause
+		%%\item Lie algebra $\mathfrak{g}$ with scalar product $\kappa$
+		%%%\pause
+		%%\item $\mathfrak{g}$-representation $\Psi: \mathfrak{g} \to \mathup{End}(W)$ on $W$
+		%%\item Potential $\mathcal{V} \in C^\infty(W)$
+	%%\end{itemize}
+%%\end{situation}
+%%\pause
+%
+%\begin{situation}[Fields]
+%%Space of fields $\mathfrak{M}_{\mathfrak{g}} \coloneqq C^\infty(M;W) \times \Omega^1(M; \mathfrak{g})$, consisting of:
+	%\begin{itemize}[<+->]
+		%\item	Higgs field $\Phi \in C^\infty(M;W)$
+		%\item Field of gauge bosons $A \in \Omega^1(M; \mathfrak{g})$
+	%\end{itemize}
+%\end{situation}
+%%\footlineextra{Source: Mark JD Hamilton. \textit{Mathematical Gauge Theory}. Springer, 2017.}
+%\end{frame}
+%
+%\begin{frame}
+%\begin{definition}[Field strength]
+%\textbf{Field strength} $F$, $ (\Phi, A) \mapsto F(\Phi, A) \in \Omega^2(M; \mathfrak{g})$, given by
+%\ba
+%F(\Phi, A)
+%&\coloneqq
+%\mathup{d}A
+	%+ \frac{1}{2} \mleft[ A \stackrel{\wedge}{,} A \mright]_{\mathfrak{g}}
+%\equiv
+%F(A).
+%\ea
+%\end{definition}
+%%\footlineextra{Source: Mark JD Hamilton. \textit{Mathematical Gauge Theory}. Springer, 2017.}
+%\end{frame}
+%
+%\begin{frame}
+%\begin{remark}
+%\vspace{-0.5cm}
+%\bas
+%\mleft[ A \stackrel{\wedge}{,} A \mright]_{\mathfrak{g}}(X,Y)
+%&=
+%\mleft[ A(X) \stackrel{\wedge}{,} A(Y) \mright]_{\mathfrak{g}}
+	%- \mleft[ A(Y) \stackrel{\wedge}{,} A(X) \mright]_{\mathfrak{g}}
+%\\
+%&=
+%%2 \mleft[ A(X) \stackrel{\wedge}{,} A(Y) \mright]_{\mathfrak{g}}
+%%=
+%\mleft(C^a_{bc} A^b \wedge A^c \otimes e_a \mright)(X,Y)
+%\eas
+%for all $X, Y \in \mathfrak{X}(M)$, $\mleft( e_a \mright)_a$ a basis of $\mathfrak{g}$ and $C^a_{bc}$ their structure constants, that is, $\mleft[ e_b, e_c \mright]_{\mathfrak{g}} = C_{bc}^a e_a$.
+%\end{remark}
+%%\vfill
+%%\footlineextra{Source: Mark JD Hamilton. \textit{Mathematical Gauge Theory}. Springer, 2017.}
+%\end{frame}
+%
+%%\begin{frame}
+%%\begin{remark}
+%%$\mleft( e_a \mright)_a$ a basis of $\mathfrak{g}$, then
+%%\bas
+%%\mathup{d}A
+%%&\coloneqq
+%%\mathup{d}A^a \otimes e_a.
+%%\eas
+%%Let $\nabla$ be the canonical flat connection of $M \times \mathfrak{g}$, \textit{i.e.}~$\nabla e_a = 0$, then
+%%\bas
+%%\mathup{d}A
+%%&=
+%%\mathup{d}^\nabla A.
+%%\eas
+%%\end{remark}
+%%%\vfill
+%%%\footlineextra{Source: Mark JD Hamilton. \textit{Mathematical Gauge Theory}. Springer, 2017.}
+%%\end{frame}
+%
+%\begin{frame}
+%\begin{definition}[Minimal coupling]
+%\textbf{Minimal coupling} $\mathfrak{D}$, $(\Phi,A) \mapsto \Omega^1(M; W)$, defined by
+%\ba
+%\mathfrak{D}(\Phi, A)
+%&\coloneqq
+%\mathfrak{D}^A \Phi
+%\coloneqq
+%\mathup{d}\Phi
+	%+ \psi(A)(\Phi).
+%\ea
+%\end{definition}
+%%\vfill
+%%\footlineextra{Source: Mark JD Hamilton. \textit{Mathematical Gauge Theory}. Springer, 2017.}
+%\end{frame}
+%
+%\begin{frame}
+%\begin{definition}[YMH Lagrangian]
+%\textbf{Yang-Mills-Higgs Lagrangian} $\mathfrak{L}_{\mathup{YMH}}$, $(\Phi, A) \mapsto \Omega^{\mathup{dim}(M)}(M)$, defined by
+%\ba
+%\mathfrak{L}_{\mathrm{YMH}}(\Phi, A)
+%&\coloneqq
+%-\frac{1}{2} ~ \kappa\bigl( F(A) \stackrel{\wedge}{,} * F(A) \bigr)
+%\nonumber\\
+%&\hspace{1cm}
+	%+ g\mleft( \mathfrak{D}^A\Phi \stackrel{\wedge}{,} * \mathfrak{D}^A\Phi \mright)
+	%- *\bigl( \mathcal{V} \circ \Phi \bigr),
+%\ea
+%where $*$ is the Hodge star operator with respect to the spacetime metric $\eta$.
+%\end{definition}
+%
+%%\footlineextra{Source: Mark JD Hamilton. \textit{Mathematical Gauge Theory}. Springer, 2017.}
+%\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}
+%
+%\subsection{Infinitesimal gauge invariance}
+%
+%\begin{frame}
+%\begin{definition}[Infinitesimal gauge transformation of fields]
+%Parametrised by $\varepsilon \in C^\infty(M; \mathfrak{g})$:
+%\ba
+%\delta_\varepsilon \Phi
+%&\coloneqq
+%\psi(\varepsilon)(\Phi),
+%\\
+%\delta_\varepsilon A
+%&\coloneqq
+%\mleft[ \varepsilon, A \mright]_{\mathfrak{g}}
+	%- \mathrm{d}\varepsilon,
+%\ea
+%for all $(\Phi, A) \in \mathfrak{M}_{\mathfrak{g}}$.
+%\end{definition}
+%
+%%\footlineextra{Source: Mark JD Hamilton. \textit{Mathematical Gauge Theory}. Springer, 2017.}
+%\end{frame}
+%%
+%%{
+%%\setbeamertemplate{footline}{}
+%%\begin{frame}
+%%\begin{remark}
+%%\vspace{-0.5cm}
+%%\bas
+%%&&
+%%\Psi_\varepsilon|_{(\Phi, A)}
+%%&\coloneqq
+%%(\delta_\varepsilon \Phi, \delta_\varepsilon A)
+%%\in
+%%\mathfrak{M}_\mathfrak{g}
+%%\cong
+%%\mathup{T}_{(\Phi,A)}\mleft(\mathfrak{M}_{\mathfrak{g}}\mright)
+%%\\
+%%&\Rightarrow&
+%%\Psi_\varepsilon
+%%&\in
+%%\mathfrak{X}(\mathfrak{M}_{\mathfrak{g}})
+%%\eas
+%%\end{remark}
+%%\end{frame}
+%%}
+%
+%\begin{frame}
+%\begin{definition}[Infinitesimal gauge transformation of a functional]
+%Let $K$ be a vector space and $k \in \mathbb{N}_0$. For $\varepsilon \in C^\infty(M; \mathfrak{g})$ we define the \textbf{infinitesimal gauge transformation $\delta_\varepsilon L$ of a functional $L: \mathfrak{M}_{\mathfrak{g}} \to \Omega^k(M; K)$} as a map $\mathfrak{M}_{\mathfrak{g}} \to \Omega^k(M;K)$ by
+%\ba
+%\mleft(\delta^{\mathrm{clas}}_\varepsilon L\mright)(\Phi, A)
+%&\coloneqq
+%\mleft.\frac{\mathrm{d}}{\mathrm{d}t}\mright|_{t=0}
+%\mleft[ t \mapsto
+	%L\mleft(
+		%\Phi + t \delta_\varepsilon \Phi,
+		%A + t \delta_\varepsilon A
+	%\mright)
+%\mright]
+%\ea
+%for $t \in \mathbb{R}$ and all $(\Phi, A) \in \mathfrak{M}_{\mathfrak{g}}$.
+%\end{definition}
+%
+%\pause
+%
+%\begin{remark}
+%$L \in \Omega^{k,0}(M \times \mathfrak{M}_{\mathfrak{g}}; K)$
+%\end{remark}
+%
+%%\footlineextra{Source: Mark JD Hamilton. \textit{Mathematical Gauge Theory}. Springer, 2017.}
+%\end{frame}
+%
+%\begin{frame}
+%\begin{theorem}[Gauge invariance of the Lagrangian]
+%Assume that $\kappa$ is $\mathrm{ad}$-invariant, $g$ is $\psi$-invariant, and $\mathcal{L}_\gamma \mathcal{V} = 0$. Then
+%\ba
+%\delta_\varepsilon^{\mathrm{clas}} \mathfrak{L}_{\mathup{YMH}}
+%&=
+%0.
+%\ea
+%\end{theorem}
+%
+%%\footlineextra{Source: Mark JD Hamilton. \textit{Mathematical Gauge Theory}. Springer, 2017.}
+%\end{frame}
+%}
+%
+%{
+%\setbeamertemplate{footline}{}
+%\begin{frame}
+%\begin{remark}
+%%\vspace{-0.5cm}
+%Define $\Psi_\varepsilon \in \mathfrak{X}(\mathfrak{M}_{\mathfrak{g}})$ by
+%\bas
+%&&
+%\Psi_\varepsilon|_{(\Phi, A)}
+%&\coloneqq
+%(\delta_\varepsilon \Phi, \delta_\varepsilon A)
+%\in
+%\mathfrak{M}_\mathfrak{g}
+%\cong
+%\mathup{T}_{(\Phi,A)}\mleft(\mathfrak{M}_{\mathfrak{g}}\mright)
+%%\\
+%%&\Rightarrow&
+%%\Psi_\varepsilon
+%%&\in
+%%\mathfrak{X}(\mathfrak{M}_{\mathfrak{g}})
+%\eas
+%Let $\mleft( e_a \mright)_a$ be a basis of $K$, then
+%\bas
+%\delta^{\mathrm{clas}}_\varepsilon L
+%&=
+%\mathcal{L}_{\Psi_\varepsilon} L^a \otimes e_a,
+%\eas
+%where $L^a \in \Omega^{k,0}(M \times \mathfrak{M}_{\mathfrak{g}})$.
+%\end{remark}
+%\end{frame}
+%}
+%
+%\section{First steps}
+%%\subsection{Idea}
+%%
+%%{
+%%\setbeamertemplate{footline}{}
+%%
+%%\begin{frame}
+%%\begin{idea}
+	%%\begin{itemize}[<+->]
+		%%\item Generalize functionals as having values in more general vector bundles, not just trivial ones
+		%%\item View $\delta_\varepsilon$ as a derivation induced by some sort of connection $\nabla$ differentiating along $\Psi_\varepsilon|_{(\Phi, A)} = (\delta_\varepsilon \Phi, \delta_\varepsilon A)$, \textit{i.e.}~"$\nabla_{\Psi_\varepsilon}$"
+	%%\end{itemize}
+%%\end{idea}
+%%%\setbeamercovered{invisible}
+%%\pause
+%%$\Rightarrow$ Lie algebra connection
+%%\end{frame}
+%%}
+%
+%\subsection{Lie algebra connections}
+%
+%%\renewcommand\insertreferences{{\tiny Ana Cannas Da Silva, Alan Weinstein. \textit{Geometric models for noncommutative algebras}, \newline volume 10. American Mathematical Society, 1999.}}
+%
+%%\begin{frame}
+%%\begin{definition}[Lie algebra action]
+%%A \textbf{Lie algebra action} of a Lie algebra $\mathfrak{g}$ on a smooth manifold $N$ is a Lie algebra homomorphism 
+%%\bas
+%%\gamma: \mathfrak{g} \to \mathfrak{X}(N)
+%%\eas
+%%such that the map
+%%\bas
+%%N \times \mathfrak{g} &\to \mathrm{T}N, \\
+%%(p, X) &\mapsto \gamma(X)_p
+%%\eas
+%%is smooth, equipping $N \times \mathfrak{g}$ with the canonical structure of product manifolds.
+%%\end{definition}
+%%%\footlineextra{\tiny Ref: Ana Cannas Da Silva, Alan Weinstein. \textit{Geometric models for noncommutative algebras}, volume 10. Am.~Math.~Soc., 1999.}
+%%\end{frame}
+%
+%\renewcommand\insertreferences{{\tiny Camilo Arias Abad, Marius Crainic. Representations up to homotopy of Lie algebroids. \newline \textit{Journal für die reine und angewandte Mathematik (Crelles Journal)}, 2012(663):91–126, 2012.}}
+%
+%\begin{frame}
+%\begin{definition}[$\mathfrak{g}$-connection]
+%Let $\gamma: \mathfrak{g} \to \mathfrak{X}(N)$ be a Lie algebra action on a smooth manifold $N$. Then a \textbf{$\mathfrak{g}$-connection} on a vector bundle $V \to N$ is an $\mathbb{R}$-bilinear map ${}^\mathfrak{g}\nabla$
+%\bas
+%\mathfrak{g} \times \Gamma(V) &\to \Gamma(V),
+%\\
+%(X, \nu) &\mapsto {}^\mathfrak{g}\nabla_X \nu,
+%\eas
+%satisfying
+%\ba\label{FirstStepToEDerivatives}
+%{}^\mathfrak{g}\nabla_X (f \nu)
+%&=
+%f ~ {}^\mathfrak{g}\nabla_X \nu
+	%+ \mathcal{L}_{\gamma(X)}(f) ~ \nu
+%\ea
+%for all $X \in \mathfrak{g}, \nu \in \Gamma(V)$ and $f \in C^\infty(N)$.
+%%, where $\mathcal{L}_{\gamma(X)}(f)$ is the action of the vector field $\gamma(X)$ on the function $f$ by derivation.
+%\end{definition}
+%%\footlineextra{\tiny Ref: Camilo Arias Abad, Marius Crainic. Representations up to homotopy of Lie algebroids. \textit{Journal für die reine und angewandte Mathematik (Crelles Journal)}, 2012(663):91–126, 2012.}
+%\end{frame}
+%
+%\renewcommand\insertreferences{{ Mohamed Boucetta. Riemannian geometry of Lie algebroids. \newline \textit{Journal of the Egyptian Mathematical Society}, 19(1-2):57–70, 2011. }}
+%
+%\begin{frame}
+%\begin{example}
+%$\nabla$ a vector bundle connection on $V \to N$, then
+%\ba
+%{}^{\mathfrak{g}}\nabla_X \nu
+%&\coloneqq
+%\nabla_{\gamma(X)} \nu
+%\ea
+%for all $X \in \mathfrak{g}$ and $\nu \in \Gamma(V)$.
+%\end{example}
+%\end{frame}
+%
+%\renewcommand\insertreferences{{\tiny Camilo Arias Abad, Marius Crainic. Representations up to homotopy of Lie algebroids. \newline \textit{Journal für die reine und angewandte Mathematik (Crelles Journal)}, 2012(663):91–126, 2012.}}
+%
+%\begin{frame}
+%\begin{example}
+%Additionally, if $V= N \times W$ a trivial vector bundle over $N$, $W$ a vector space with $\mathfrak{g}$-representation $\psi: \mathfrak{g} \to \mathrm{End}(W)$, and $\nabla$ the canonical flat connection on $V$, then we have the \textbf{basic connection} given by
+%\ba
+%\nabla^{\mathrm{bas}}_X \nu
+%&\coloneqq
+%\psi(X)(\nu)
+	%+ \nabla_{\gamma(X)} \nu
+%\ea
+%for all $X \in \mathfrak{g}$ and $\nu \in \Gamma(V)$.
+%\end{example}
+%\end{frame}
+%
+%%{
+%%\setbeamertemplate{footline}{}
+%%\renewcommand\insertreferences{{\tiny Thanks to Anton Alekseev and Mark J.~D.~Hamilton for encouraging me to use the evaluation map in my definitions.}}
+%\subsection{Pullbacks of Lie algebra connections}
+%{
+%\makeatletter
+%\setbeamertemplate{footline}
+%{
+  %\leavevmode%
+  %\hbox{%
+  %\begin{beamercolorbox}[wd=.09\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    %\usebeamerfont{author in head/foot}
+		%Sources
+  %\end{beamercolorbox}%
+  %\begin{beamercolorbox}[wd=.91\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    %\usebeamerfont{title in head/foot}
+		%Thanks to Anton Alekseev and Mark J.~D.~Hamilton for encouraging me to use the evaluation map in my definitions.
+  %\end{beamercolorbox}%
+  %%\begin{beamercolorbox}[wd=.175\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    %%\usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+    %%%\insertframenumber{} 
+		%%%/ \inserttotalframenumber\hspace*{2ex} 
+  %%\end{beamercolorbox}
+	%}%
+  %\vskip0pt%
+%}
+%\begin{frame}
+%\begin{definition}[Evaluation map]
+%$\mathrm{ev}: M \times \mathfrak{M}_{\mathfrak{g}} \to N$ by
+%\ba
+%\mathrm{ev}(p, \Phi, A)
+%&\coloneqq
+%\Phi(p)
+%\ea
+%for all $(p, \Phi, A) \in M \times \mathfrak{M}_{\mathfrak{g}}$.
+%\end{definition}
+%\end{frame}
+%}
+%
+%{
+%\setbeamertemplate{footline}{}
+%\setbeamercovered{invisible}
+%
+%\begin{frame}
+%\begin{remark}[Problem 1]
+%For a vector bundle connection $\nabla$ on $V \to N$, $\mathrm{ev}^*\nabla$ is defined on $\mathrm{ev}^*V$.
+%\end{remark}
+%\end{frame}
+%
+%\begin{frame}
+%\begin{remark}
+%$L: \mathfrak{M}_{\mathfrak{g}} \to \Omega^k(M; K) \Rightarrow L \in \Omega^k(M \times \mathfrak{M}_{\mathfrak{g}}; K)$. Then make use of
+%\bas
+%M \times \mathfrak{M}_{\mathfrak{g}} \times K
+%&\cong
+%\mathrm{ev}^*(N \times K)
+%\eas
+%\textit{i.e.} let $\mleft( e_a \mright)_a$ be a basis of $K$, and, for $P$ a smooth manifold, denote with $\iota_P(e_a)$ the constant section of $P \times K \to P$ with $\iota_P(e_a) = e_a$, then
+%\bas
+%L
+%&=
+%L^a \otimes e_a
+%=
+%L^a \otimes \iota_{M \times \mathfrak{M}_{\mathfrak{g}}}(e_a),
+%\eas
+%and, alternatively,
+%\bas
+%L
+%&=
+%L^a \otimes \mathrm{ev}^*\bigl(\iota_N(e_a)\bigr)
+%\eqqcolon
+%\iota(L),
+%\eas
+%$\iota(L)$ the \textbf{bookkeeping trick}, 
+%\bas
+%\mathfrak{M}_{\mathfrak{g}} \ni (\Phi, A) \mapsto \iota(L)(\Phi,A) \in \Omega^k(M; \Phi^*(N\times K)).
+%\eas
+%\end{remark}
+%\end{frame}
+%
+%\begin{frame}
+%\begin{remark}[Problem 2]
+%Usually, for a vector bundle connection $\nabla$ on $V \to N$:
+%\bas
+%\mleft( \mathrm{ev}^*\nabla \mright)_\Psi \mleft( \mathrm{ev}^*\nu \mright)
+%&=
+%\mathrm{ev}^*\mleft(
+	%\nabla_{\mathrm{Dev}(\Psi)} \nu
+%\mright)
+%\eas
+%for all $\Psi \in \mathfrak{X}(M \times \mathfrak{M}_{\mathfrak{g}})$ and $\nu \in \Gamma(V)$, viewing $\mathrm{Dev}$ as an element of $\Omega^1(M \times \mathfrak{M}_{\mathfrak{g}}; \mathrm{ev}^*\mathrm{T}N)$.
+%\end{remark}
+%\end{frame}
+%
+%\begin{frame}
+%\begin{idea}[Pullback condition]
+%Take a pair of $\Psi \in \mathfrak{X}(M \times \mathfrak{M}_{\mathfrak{g}})$ and $\varepsilon \in C^\infty(M \times \mathfrak{M}_{\mathfrak{g}}; \mathfrak{g})$ such that
+%\ba
+%\mathrm{D}_{(p, \Phi, A)}\mathrm{ev}(\Psi)
+%&=
+%- \mleft.\gamma\bigl(\varepsilon(p, \Phi, A) \bigr)\mright|_{\Phi(p)}
+%\ea
+%for all $(p, \Phi, A) \in M \times \mathfrak{M}_{\mathfrak{g}}$.
+%\pause
+%
+%Define the \textbf{anchor} $\rho: N \times \mathfrak{g} \to \mathrm{T}N$ by
+%\ba
+%\rho(p, X)
+%\coloneqq
+%\gamma(X)|_p
+%\ea
+%for all $(p, X) \in N \times \mathfrak{g}$,
+%then
+%\ba
+%\mathrm{Dev}(\Psi)
+%&=
+%- (\mathrm{ev}^*\rho)\bigl( \iota(\varepsilon) \bigr)
+%\ea
+%\end{idea}
+%\end{frame}
+%
+%\begin{frame}
+%\begin{theorem}[Pullback for differentiating along one direction]
+%Let ${}^{\mathfrak{g}}\nabla$ be a $\mathfrak{g}$-connection on a vector bundle $V \to N$, and let $\Psi \in \mathfrak{X}(M \times \mathfrak{M}_{\mathfrak{g}})$ and $\varepsilon \in \Gamma\bigl(\mathrm{ev}^*(N \times \mathfrak{g})\bigr)$ such that
+%\bas
+%\mathrm{Dev}(\Psi)
+%&=
+%- (\mathrm{ev}^*\rho)(\varepsilon).
+%\eas
+%
+%Then there is a unique $\mathbb{R}$-linear operator $\delta_{\Psi}: \Gamma(\mathrm{ev}^*V) \to \Gamma(\mathrm{ev}^*V)$ with
+%\ba
+%\delta_{\Psi}(h s)
+%&=
+%\mathcal{L}_{\Psi}(h) ~ s
+	%+ h ~ \delta_{\Psi} s,
+%\\
+%\delta_{\Psi} (\mathrm{ev}^*v)
+%&=
+%- \mathrm{ev}^*\mleft(
+	%{}^{\mathfrak{g}}\nabla_{\varepsilon} v
+%\mright)
+%\ea
+%for all $s \in \Gamma(\mathrm{ev}^*V)$, $v \in \Gamma(V)$ and $h \in C^\infty(M \times \mathfrak{M}_{\mathfrak{g}})$.
+%\end{theorem}
+%\pause
+%\begin{remark}
+%For $V = N \times \mathbb{R}$: $\delta_\Psi = \mathcal{L}_\Psi$.
+%\end{remark}
+%\end{frame}
+%
+%\begin{frame}
+%\begin{remark}
+%Restrict to $\Psi = (0, \Psi_\varepsilon)$, where formally $\Psi_\varepsilon|_{(\Phi, A)} = (\delta_\varepsilon \Phi, \delta_\varepsilon A)$. Then
+%\bas
+%\mathrm{D}_{(p, \Phi, A)}\mathrm{ev}(\Psi)
+%&=
+%\mleft(\delta_\varepsilon \Phi\mright)|_p
+%\eas
+%for all $(p, \Phi, A) \in M \times \mathfrak{M}_{\mathfrak{g}}$.
+%\bas
+%&\Rightarrow&
+%(\delta_\varepsilon \Phi)|_p
+%&\stackrel{!}{=}
+%-\mleft. \gamma\bigl( \varepsilon(p, \Phi, A) \bigr)\mright|_{\Phi(p)}.
+%\eas
+%\pause
+%
+%If $\gamma$ induced by a $\mathfrak{g}$-representation, then
+%\bas
+%(\delta_\varepsilon \Phi)|_p
+%&\stackrel{!}{=}
+%\psi\bigl( \varepsilon(p, \Phi, A) \bigr)\bigl(\Phi(p)\bigr).
+%\eas
+%\end{remark}
+%\end{frame}
+%
+%\begin{frame}
+%\begin{definition}[Infinitesimal gauge transformation]
+%We define the \textbf{infinitesimal gauge transformation $\delta_\varepsilon L$ for $L: \mathfrak{M}_{\mathfrak{g}} \to \Omega^k(M; K)$} ($k \in \mathbb{N}_0$) as a map $\mathfrak{M}_{\mathfrak{g}} \to \Omega^k(M; K)$ by
+%\ba
+%\mleft(\delta_\varepsilon L\mright)(Y_1, \dotsc, Y_k)
+%&\coloneqq
+%\delta_{\Psi_\varepsilon}\bigl(
+	%\iota(L)(Y_1, \dotsc, Y_k)
+%\bigr)
+%\ea
+%for all $Y_1, \dotsc, Y_k \in \mathfrak{X}(M)$.
+%\end{definition}
+%\pause
+%\begin{remark}
+%Recall $L \in \Omega^{k,0}(M \times \mathfrak{M}_{\mathfrak{g}}; K)$.
+%\end{remark}
+%\end{frame}
+%
+%\begin{frame}
+%\begin{theorem}[Recovering the typical definition]
+%For ${}^{\mathfrak{g}}\nabla = \nabla_\gamma$, where $\nabla$ is the canonical flat connection of $N \times K$, we get 
+%\ba
+%\delta_\varepsilon L
+%&=
+%\delta^{\mathrm{clas}}_\varepsilon L.
+%\ea
+%\end{theorem}
+%\end{frame}
+%
+%\begin{frame}
+%\begin{summary}
+%\begin{itemize}[<+->]
+	%\item Using $\mathfrak{g}$-connections to describe infinitesimal gauge transformations $\Rightarrow$ Lie algebroids
+	%\item Bookkeeping trick $\Rightarrow$ Define bundles over $N$ and take their $\mathrm{ev}$-pullback
+%\end{itemize}
+%\end{summary}
+%\end{frame}
+%}
+
+\subsection{Mathematical basics}
+
+\renewcommand\insertreferences{{\tiny Ana Cannas Da Silva, Alan Weinstein. \textit{Geometric models for noncommutative algebras}, \newline volume 10. American Mathematical Society, 1999.}}
+
+\begin{frame}
+%Instead of Lie algebras we want to use:
+\begin{definition}[Lie algebroids]
+Let $E \to N$ be a vector bundle. Then $E$ is a Lie algebroid, if there is a bundle map $\rho: E \to \mathrm{T}N$, called the \textbf{anchor}, and a Lie algebra structure on $\Gamma(E)$ with Lie bracket $\mleft[\cdot, \cdot\mright]_E$ satisfying
+\ba
+  \mleft[\mu, f \nu\mright]_E = f \mleft[\mu, \nu\mright]_E + \mathcal{L}_{\rho(\mu)}(f) ~ \nu
+\label{eq:E-Leibniz}
+\ea
+for all $f \in C^\infty(N)$ and $\mu, \nu \in \Gamma(E)$.
+\end{definition}
+\pause
+\begin{example}
+\begin{itemize}[<+->]
+	\item $E = \mathrm{T}N$, $\rho = \mathds{1}_{\mathrm{T}N}$
+	\item $E$ a bundle of Lie algebras, $\rho = 0$
+\end{itemize}
+\end{example}
+\end{frame}
+
+\renewcommand\insertreferences{{\tiny Yvette Kosmann-Schwarzbach and Franco Magri. Poisson-Nijenhuis structures. \newline \textit{In Annales de l’IHP Physique théorique}, volume 53, pages 35–81, 1990.}}
+
+\begin{frame}
+As for an action $\gamma: \mathfrak{g} \to \mathfrak{X}(N)$ we have:
+\begin{proposition}[Anchor as homomorphism]
+$\rho: \Gamma(E) \to \mathfrak{X}(N)$ is a homomorphism of Lie algebras.
+\end{proposition}
+\end{frame}
+
+\renewcommand\insertreferences{{\tiny Ana Cannas Da Silva, Alan Weinstein. \textit{Geometric models for noncommutative algebras}, \newline volume 10. American Mathematical Society, 1999.}}
+
+\begin{frame}
+The classical formalism will correspond to:
+\begin{proposition}[Action Lie algebroids]
+Let $\mleft(\mathfrak{g}, \mleft[\cdot, \cdot \mright]_{\mathfrak{g}}\mright)$ be a Lie algebra with a $\mathfrak{g}$-action $\gamma$ on $N$. Then there is a \textbf{unique} Lie algebroid structure on $E \coloneqq N \times \mathfrak{g}$ as a vector bundle over $N$ such that
+\ba
+\rho(\nu)
+&=
+\gamma(\nu),
+\\
+\mleft[\mu, \nu\mright]_E
+&=
+\mleft[\mu, \nu\mright]_{\mathfrak{g}}
+\ea
+for all constant sections $\mu, \nu \in \Gamma(E)$.
+\end{proposition}
+%\begin{example}[Action Lie algebroid]
+%Let $\mathfrak{g}$ be a Lie algebra with action $\gamma$ on $N$. An \textbf{action Lie algebroid} is defined as the bundle $E \coloneqq N \times \mathfrak{g}$ over $N$ with anchor
+%\ba
+%\rho(p, v) &\coloneqq \gamma(v)|_p
+%\ea
+%for $(p, v) \in E$, and Lie bracket
+%\ba\label{LieBracketActionLieAlg}
+	%\mleft.\mleft[\mu, \nu\mright]_E\mright|_p
+	%&\coloneqq 
+	%\mleft[\mu_p, \nu_p\mright]_{\mathfrak{g}}
+		%+ \mleft.\mleft(\mathcal{L}_{\gamma(\mu(p))}(\nu^a) - \mathcal{L}_{\gamma(\nu(p))}(\mu^a) \mright)\mright|_p ~ e_a
+%\ea
+	%for all $p \in N$ and $\mu, \nu \in \Gamma(E)$, where $\mleft( e_a \mright)_a$ is some arbitrary frame of constant sections.
+%\end{example}
+\end{frame}
+
+{
+\setbeamertemplate{footline}{}
+\begin{frame}
+%\begin{table}[h!]
+		%\begin{tabularx}{\textwidth}{X X}
+			%\rowcolor{gray}
+			%Classical formalism & CYMH GT \\
+			%Canonical flat connection $\nabla^0$ & General connection $\nabla$ \\
+			%\rowcolor{Gray}
+			%Lie algebra $\mathfrak{g}$ & Lie algebroid $E$ \\
+			%$\mathfrak{g}$-action $\gamma$ & Anchor $\rho$ of $E$ \\ 
+			%& \& \textbf{$E$-connections} as lift of $\rho$
+		%\end{tabularx}
+%\end{table}
+\begin{table}[h!]
+		\begin{tabularx}{\textwidth}{X X}
+			\rowcolor{gray}
+			Classical formalism & CYMH GT \\
+			Lie algebra $\mathfrak{g}$ as $M \times \mathfrak{g}$ & Lie algebroid $E \to N$ \\
+			\rowcolor{Gray}
+			$\mathfrak{g}$-action $\gamma$ & Anchor $\rho$ of $E$ \\ 
+			\rowcolor{Gray}
+			& \& \textbf{$E$-connections} as lift of $\rho$ \\
+			Canonical flat connection $\nabla^0$ on $M \times \mathfrak{g}$ & General connection $\nabla$ on $E$
+		\end{tabularx}
+\end{table}
+			%\newline
+			\pause
+		$\rightsquigarrow$ $E$-connections similar to vector bundle connections but Leibniz rule along $\rho$, \textit{i.e.}~only lifting vector fields in the image of $\rho$
+%{\setbeamercovered{invisible}
+%\pause
+%\begin{example}[$E$-connection ${}^E\nabla$ on $V$]
+%$\nabla^\prime$ a vector bundle connection on $V \to N$, then
+%\ba
+%{}^E\nabla_\nu v
+%&\coloneqq
+%\nabla^\prime_{\rho(\nu)} v
+%\ea
+%for all $\nu \in \Gamma(E)$ and $v \in \Gamma(V)$. In short denoted by $\nabla^\prime_\rho$.
+%\end{example}
+%}
+\end{frame}
+}
+
+%\begin{frame}
+%\begin{definition}[$E$-connection]
+%An \textbf{$E$-connection} on a vector bundle $V \to N$ is an $\mathbb{R}$-bilinear map ${}^E\nabla$
+%\bas
+%\Gamma(E) \times \Gamma(V) &\to \Gamma(V),
+%\\
+%(\nu, v) &\mapsto {}^E\nabla_\nu v,
+%\eas
+%satisfying
+%\ba
+%{}^E\nabla_\nu (f v)
+%&=
+%f ~ {}^E\nabla_\nu v
+	%+ \mathcal{L}_{\rho(\nu)}(f) ~ \nu,
+%\\
+%{}^E\nabla_{f \nu} v
+%&=
+%f ~ {}^E\nabla_{\nu} v
+%\ea
+%for all $\nu \in \Gamma(E), v \in \Gamma(V)$ and $f \in C^\infty(N)$.
+%%, where $\mathcal{L}_{\gamma(X)}(f)$ is the action of the vector field $\gamma(X)$ on the function $f$ by derivation.
+%\end{definition}
+%\end{frame}
+%
+\renewcommand\insertreferences{{ Mohamed Boucetta. Riemannian geometry of Lie algebroids. \newline \textit{Journal of the Egyptian Mathematical Society}, 19(1-2):57–70, 2011. }}
+
+\begin{frame}
+\begin{example}[$E$-connection ${}^E\nabla$ on $V$]
+$\nabla^\prime$ a vector bundle connection on $V \to N$, then
+\ba
+{}^E\nabla_\nu v
+&\coloneqq
+\nabla^\prime_{\rho(\nu)} v
+\ea
+for all $\nu \in \Gamma(E)$ and $v \in \Gamma(V)$. In short denoted by $\nabla^\prime_\rho$.
+\end{example}
+\end{frame}
+
+\renewcommand\insertreferences{{\tiny Camilo Arias Abad, Marius Crainic. Representations up to homotopy of Lie algebroids. \newline \textit{Journal für die reine und angewandte Mathematik (Crelles Journal)}, 2012(663):91–126, 2012.}}
+
+\begin{frame}
+\begin{example}
+For $\nabla$ a connection on $E$ we have the \textbf{basic connection} given as a pair of $E$-connections on $E$ and on $\mathrm{T}N$ by
+\ba
+\nabla^{\mathrm{bas}}_\nu \mu
+&\coloneqq
+\mleft[ \nu, \mu \mright]_E
+	+ \nabla_{\rho(\mu)} \nu,
+\\
+\nabla^{\mathrm{bas}}_\nu X
+&\coloneqq
+\mleft[ \rho(\nu), X \mright]
+	+ \rho\mleft(\nabla_{X} \nu\mright)
+\ea
+for all $X \in \mathfrak{X}(N)$ and $\nu, \mu \in \Gamma(E)$.
+\end{example}
+\pause
+\begin{remark}[Encoding of Lie algebra representations]
+Test this with trivial bundles and canonical flat connection $\nabla^0$, \textit{i.e.}~$E = N \times \mathfrak{g}$ and $\nabla^0 \nu = 0$ for constant sections $\nu$.
+\end{remark}
+\end{frame}
+
+%\renewcommand\insertreferences{{\tiny Camilo Arias Abad, Marius Crainic. Representations up to homotopy of Lie algebroids. \newline \textit{Journal für die reine und angewandte Mathematik (Crelles Journal)}, 2012(663):91–126, 2012.}}
+\begin{frame}
+\begin{definition}[Basic curvature]
+Let $\nabla$ be a connection on $E$.
+The \textbf{basic curvature $R_\nabla^{\mathrm{bas}}$} is defined as an element of $\Gamma\left(\bigwedge^2E^* \otimes \mathrm{T}^*N \otimes E \right)$ by
+\ba
+R^{\mathrm{bas}}_\nabla(\mu, \nu) X
+&\coloneqq
+\nabla_X\mleft(\mleft[\mu, \nu\mright]_E\mright) 
+	- \mleft[ \nabla_X \mu, \nu \mright]_E 
+	- \mleft[ \mu, \nabla_X \nu \mright]_E 
+\nonumber\\
+&\hspace{1cm}
+	- \nabla_{\nabla^{\mathrm{bas}}_\nu X} \mu 
+	+ \nabla_{\nabla^{\mathrm{bas}}_\mu X} \nu,
+\ea
+where $\mu, \nu \in \Gamma(E)$ and $X \in \mathfrak{X}(N)$.
+\end{definition}
+
+\pause
+\begin{proposition}
+We recover the curvature of the basic connection:
+\ba
+R_{\nabla^{\mathrm{bas}}}
+&=
+\mleft\{
+\begin{array}{ll}
+- R_\nabla^{\mathrm{bas}}(\cdot, \cdot) \circ \rho, & \text{on $E$}, \\
+- \rho \circ R_\nabla^{\mathrm{bas}}, & \text{on $\mathrm{T}N$}.
+\end{array}
+\mright.
+\ea
+\end{proposition}
+\end{frame}
+
+\subsection{Curved Yang-Mills-Higgs gauge theory}
+
+{
+\makeatletter
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.09\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}
+		Sources
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.91\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}
+		Alexei Kotov and Thomas Strobl. Curving Yang-Mills-Higgs gauge theories. \textit{Physical Review D}, 92(8):085032, 2015.
+  \end{beamercolorbox}%
+  %\begin{beamercolorbox}[wd=.175\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    %\usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+    %%\insertframenumber{} 
+		%%/ \inserttotalframenumber\hspace*{2ex} 
+  %\end{beamercolorbox}
+	}%
+  \vskip0pt%
+}
+\begin{frame}
+\begin{definition}[Space of fields]
+Fields are a pair consisting of:
+\begin{itemize}[<+->]
+	\item Higgs field $\Phi \in C^\infty(M;N)$
+	\item Field of gauge bosons $A \in \Omega^1(M; \Phi^*E)$
+\end{itemize}
+\end{definition}
+%\end{frame}
+\pause
+%\begin{frame}
+\begin{definition}[Minimal coupling]
+\textbf{Minimal coupling} $\mathfrak{D}$, $(\Phi, A) \mapsto \mathfrak{D}(\Phi, A) \in \Omega^1(M; \Phi^*\mathrm{T}N)$, by
+\ba
+\mathfrak{D}(\Phi, A)
+&\coloneqq
+\mathfrak{D}^A \Phi
+\coloneqq
+\mathrm{D}\Phi
+	- (\Phi^*\rho)(A),
+\ea
+where $\mathrm{D}\Phi: \mathrm{T}M \to \mathrm{T}N$ is the tangent map.
+\end{definition}
+%\vfill
+%\footlineextra{Source: Mark JD Hamilton. \textit{Mathematical Gauge Theory}. Springer, 2017.}
+\end{frame}
+
+\begin{frame}
+\setbeamercovered{invisible}
+\begin{definition}[Field strength]
+Let $\nabla$ be a connection on $E$. We define the \textbf{field strength $F$}, $(\Phi, A) \mapsto F(\Phi, A) \in \Omega^2(M; \Phi^*E)$, by
+\ba
+F(\Phi, A)
+\coloneqq
+\mathrm{d}^{\Phi^*\nabla} A
+	+ \frac{1}{2} \mleft( \Phi^* t_{\nabla^{\mathrm{bas}}} \mright)\mleft( A \stackrel{\wedge}{,} A \mright),
+\ea
+where $t_{\nabla^{\mathrm{bas}}}$ is the torsion of $\nabla^{\mathrm{bas}}$ on $E$ and $\mathrm{d}^{\Phi^*\nabla}$ the exterior covariant derivative of $\Phi^*\nabla$.
+\end{definition}
+%\end{frame}
+%
+%\begin{frame}
+\pause
+\begin{definition}[Generalised field strength]
+Let $\zeta$ be an element of $\Omega^2(N; E)$, then we define the \textbf{generalised field strength $G$} by
+\ba
+G(\Phi,A)
+&\coloneqq
+F(\Phi, A)
+	+ \frac{1}{2} (\Phi^*\zeta)\mleft( \mathfrak{D}^A \Phi \stackrel{\wedge}{,} \mathfrak{D}^A \Phi \mright).
+\ea
+\end{definition}
+%\pause
+%\begin{corollary}
+%We have
+%\ba
+%\delta_\varepsilon G
+%&=
+%\delta_\varepsilon F
+	%- \frac{1}{2} \mleft(\mathrm{ev}^*\mleft(\nabla^{\mathrm{bas}}_\varepsilon \zeta\mright)\mright)\mleft( \mathfrak{D} \stackrel{\wedge}{,} \mathfrak{D} \mright).
+%\ea
+%\end{corollary}
+\end{frame}
+
+\begin{frame}
+\begin{definition}[Curved Yang-Mills-Higgs (CYMH) Lagrangian]
+Let $\kappa$ be a fibre metric on $E$, then the \textbf{curved Yang-Mills-Higgs Lagrangian $\mathfrak{L}_{\mathrm{CYMH}}$}, $(\Phi, A) \mapsto \mathfrak{L}_{\mathrm{CYMH}}(\Phi, A) \in \Omega^{\mathrm{dim}(M)}(M)$, is defined by
+\ba
+\mathfrak{L}_{\mathrm{CYMH}}(\Phi, A)
+&\coloneqq
+- \frac{1}{2} \mleft( \Phi^*\kappa \mright)\mleft(G(\Phi, A) \stackrel{\wedge}{,} *G(\Phi, A) \mright)
+\nonumber \\
+&\hspace{1cm}
+	+ \mleft( \Phi^*g \mright)\mleft(\mathfrak{D}^A \Phi \stackrel{\wedge}{,} *\mathfrak{D}^A \Phi \mright)
+	- *(\Phi^*\mathcal{V}),
+\ea
+where $*$ is the Hodge star operator related to the spacetime metric $\eta$.
+\end{definition}
+\end{frame}
+
+%Add slide about the aim of CYMH GT
+
+\begin{frame}
+\begin{definition}[CYMH GT]
+Assume we have additionally the \textbf{compatibility conditions}
+\ba
+	R_\nabla + \mathrm{d}^{\nabla^{\mathrm{bas}}} \zeta &= 0,\label{EqMyFormulationOfZetaCondition} \\
+	R_\nabla^{\mathrm{bas}} &= 0, \label{VanishingBasicCurvComp} \\
+	\nabla^{\mathrm{bas}} \kappa &= 0, \\
+	\nabla^{\mathrm{bas}} g &= 0, \\
+	\mathcal{L}_\rho \mathcal{V} &= 0,
+\ea
+then we say that we have a \textbf{curved Yang-Mills-Higgs gauge theory}.
+\pause
+
+We say that we have a \textbf{pre-classical gauge theory}, if $\nabla$ is flat.
+\pause
+
+If we have additionally $\zeta \equiv 0$, then we say that we have a \textbf{classical gauge theory}.
+\end{definition}
+\end{frame}
+
+\begin{frame}{Summary}
+\begin{center}
+	\begin{tikzcd}[ampersand replacement=\&, column sep=small]
+		\Phi^*E \arrow{d} \& (E, \mleft[ \cdot, \cdot \mright]_E, \kappa, \nabla) \arrow{d} \arrow{rd}{\rho} \\
+		M \arrow[r, "\Phi"] \& (N, g) \& \arrow{l} \mathrm{T}N \arrow[lu, bend right, swap, "\zeta \in \Omega^2"] 
+	\end{tikzcd}
+\end{center}
+
+$\rightsquigarrow$ Together with the compatibility conditions we  will have gauge invariance, that is,
+\ba
+\delta_\varepsilon \mathfrak{L}_{\mathrm{CYMH}}
+&=
+0.
+\ea
+%\pause
+%
+%but how to define the infinitesimal gauge transformation $\delta_\varepsilon$?
+\end{frame}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section{Infinitesimal gauge transformation}
+%\subsection{Sketch of definition}
+%{
+%\makeatletter
+%\setbeamertemplate{footline}{}
+%\begin{frame}{My results and contributions, starting with the following:}
+%Definition of infinitesimal gauge transformation $\delta_\varepsilon L$ for functionals $L$, where $W$ is a vector space and $V \to N$ a vector bundle:
+%%\newline 
+%\pause
+%\vfill
+%%\centering
+%\begin{table}[h!]
+		%\begin{tabularx}{\textwidth}{X| c c} 
+			%\rowcolor{gray}
+			%& Classical & CYMH GT \\ \hline
+			%$\varepsilon$ & $\varepsilon \in C^\infty(M; \mathfrak{g})$ & $(\Phi,A) \mapsto \varepsilon(\Phi, A) \in \Gamma(\Phi^*E)$ \\
+			%\rowcolor{Gray}
+			%$(\delta_\varepsilon \Phi, \delta_\varepsilon A)$ 
+			%%& Infinitesimal of a group action 
+			%& \multicolumn{2}{c}{Vector field $\Psi_\varepsilon$ on $\{(\Phi, A)\}$}
+			%\\
+			%$L$ 
+			%& $L(\Phi,A) \in \Omega^\bullet(M; W)$
+			%& $L(\Phi,A) \in \Omega^\bullet(M; \Phi^*V)$
+			%\\
+			%\rowcolor{Gray}
+			%$\delta_\varepsilon$
+			%& \multicolumn{2}{c}{Derivation as lift of $\Psi_\varepsilon$ with:}
+			%\\
+			%\rowcolor{Gray}
+			%& canon.~flat conn.~$\nabla^0$
+			%& $E$-connection ${}^E\nabla$
+			%\\
+			%\rowcolor{Gray}
+			%& on $M \times W$
+			%& on $V$
+		%\end{tabularx}
+%\end{table}
+%\pause
+%\vfill
+%\begin{itemize}[<+->]
+	%\item We also write $\delta^{{}^E\nabla}_\varepsilon \coloneqq \delta_\varepsilon$.
+	%\item What about: $[\delta_\varepsilon,\delta_\vartheta] = \delta_\varepsilon \delta_\vartheta - \delta_\vartheta \delta_\varepsilon$?
+%\end{itemize}
+%\end{frame}
+%}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%{
+%\setbeamertemplate{footline}{}
+%\begin{frame}
+%\begin{theorem}[$\delta_\varepsilon \Phi$]
+	%Let ${}^E\nabla$ be an $E$-connection on $V$. If 
+	%\ba
+	%\delta_\varepsilon \Phi
+	%&=
+	%- (\Phi^*\rho)\bigl(\varepsilon(\Phi, A) \bigr)
+	%\ea
+	%then there is a unique linear $\delta_\varepsilon$ with Leibniz rule and
+	%\ba
+	%\mleft.\delta_\varepsilon\bigl( [\Phi \mapsto \Phi^*v] \bigr)\mright|_{(\Phi,A)}
+	%&=
+		%- \Phi^*\mleft( {}^E\nabla_{\varepsilon(\Phi,A)} v \mright)
+	%\ea
+	%for all $v \in \Gamma(V)$. We also write $\delta_\varepsilon = \delta_{\Psi_\varepsilon}$.
+%\end{theorem}
+%\end{frame}
+%
+%\begin{frame}
+%\begin{theorem}[$\delta_\varepsilon A$]
+%Let ${}^E\nabla = \nabla^{\mathrm{bas}}$ as $E$-connection on $E$, $\Psi_\varepsilon$ such that $\delta_\varepsilon \Phi = - (\Phi^*\rho)\bigl(\varepsilon(\Phi,A)\bigr)$, and $\nabla$ a connection on $E$. Then there is a unique $\Psi_\epsilon$ such that
+%\ba
+%\mleft.\mleft(\delta_{\Psi_\varepsilon} \varpi_2\mright)\mright|_{(\Phi,A)}
+%&=
+%- (\Phi^*\nabla) \bigl(\varepsilon(\Phi, A) \bigr),
+%\ea
+%where $\varpi_2(\Phi, A) \coloneqq A$.
+%\end{theorem}
+%
+%\pause
+%$\Rightarrow$ Together with the \textbf{compatibility conditions}: That gives the $\Psi_\varepsilon$ needed for the actual physical gauge transformation under which the Lagrangian is invariant
+%\end{frame}
+%
+%\subsection{Curvature}
+%
+%\begin{frame}
+%\begin{theorem}[Curvature of $\delta$, {[S.-R. F.]}]
+%Let ${}^E\nabla$ be a flat $E$-connection on $V$, and $\nabla$ a connection on $E$ such that $R_\nabla^{\mathrm{bas}} = 0$. Then
+%\ba
+%\mleft[ \delta^{{}^E\nabla}_\varepsilon, \delta^{{}^E\nabla}_\vartheta \mright]
+%&=
+%- \delta^{{}^E\nabla}_{\llbracket \varepsilon, \vartheta\rrbracket}
+%\ea
+%where $\llbracket \cdot, \cdot \rrbracket$ is a Lie bracket given by
+%\ba
+%\llbracket \varepsilon, \vartheta\rrbracket |_{(\Phi,A)}
+%&\coloneqq
+%\mleft.\mleft(\delta^{\nabla^{\mathrm{bas}}}_\vartheta \varepsilon - \delta^{\nabla^{\mathrm{bas}}}_\varepsilon \vartheta\mright)\mright|_{(\Phi,A)}
+%\nonumber \\
+%&\hspace{1cm}
+ %- \bigl( \Phi^*t_{\nabla^{\mathrm{bas}}} \bigr)\bigl(\varepsilon(\Phi,A), \vartheta(\Phi,A)\bigr).
+%\ea
+%\end{theorem}
+%%\begin{definition}[Lie bracket for parameters]
+%%$\Delta: \mathcal{F}^0_E(M; {}^*E) \times \mathcal{F}^0_E(M; {}^*E) \to \mathcal{F}^0_E(M; {}^*E)$ defined by
+%%\ba
+%%\Delta(\vartheta, \varepsilon)
+%%&\coloneqq
+%%\delta_\varepsilon \vartheta - \delta_\vartheta \varepsilon - \bigl( \mathrm{ev}^*t_{\nabla^{\mathrm{bas}}} \bigr)\mleft( \vartheta, \varepsilon \mright)
+%%\ea
+%%for all $\varepsilon, \vartheta \in \mathcal{F}^0_E(M; {}^*E)$.
+%%\end{definition}
+%\end{frame}
+%
+%\begin{frame}{Result}
+%\begin{corollary}[Result]
+%Using a flat ${}^E\nabla$ results then into:
+%\ba
+%\mleft[ \delta^{{}^E\nabla}_\varepsilon, \delta^{{}^E\nabla}_\vartheta \mright]
+%&=
+%- \delta^{{}^E\nabla}_{\Delta(\varepsilon, \vartheta)}.
+%\ea
+%\end{corollary}
+%\end{frame}
+
+%\begin{frame}
+%\begin{theorem}
+%If $R_\nabla^{\mathrm{bas}} = 0$, then
+%\ba
+%[\Psi_\varepsilon, \Psi_\vartheta]
+%&=
+%- \Psi_{\Delta(\varepsilon, \vartheta)}.
+%\ea
+%\end{theorem}
+%\end{frame}
+
+%\begin{frame}
+%\begin{theorem}[Curvature of $\delta$]
+%Let ${}^E\nabla$ be an $E$-connection on a vector bundle $V \to N$, and $\nabla$ such that $R_\nabla^{\mathrm{bas}} = 0$. Then
+%\ba
+%\mleft(
+	%\mleft[ \delta_\varepsilon, \delta_\vartheta \mright]
+	%+ \delta_{\Delta(\varepsilon, \vartheta)}
+%\mright) L
+%&=
+%(\mathrm{ev}^*R_{{}^E\nabla})(\varepsilon, \vartheta)L
+%\ea
+%for all $L \in \mathcal{F}^k_E(M; {}^*V)$ ($k \in \mathbb{N}_0$) and $\varepsilon, \vartheta \in \mathcal{F}^0_E(M; {}^*E)$.
+%\end{theorem}
+%
+%\pause
+%$\Rightarrow$ Together with first Bianchi identity of $R_{{}^E\nabla}$: $\Delta$ a Lie bracket
+%\end{frame}
+%}
+\section{Field Redefinition}
+\subsection{General definition}
+{
+\setbeamertemplate{footline}{}
+
+\begin{frame}
+\begin{motivation}
+\begin{itemize}[<+->]
+	\item Are there CYMH GTs which are neither pre-classical nor classical?
+	\item Difficulty: There is an equivalence relation of CYMH GTs keeping the same Lagrangian and preserving the physics, possibly turning theories into (pre-)classical ones. 
+	\newline
+	
+	This was provided by Edward Witten in a private communication with Thomas Strobl about a specific example of a CYMH GT.
+\end{itemize}
+\end{motivation}
+\end{frame}
+
+\begin{frame}
+\begin{definition}[Field redefinition, {[S.-R. F.]}]
+%Roughly: Field of gauge bosons $A \rightsquigarrow A + A^\prime$ s.t.~same physics
+%\bas
+%\Rightarrow \nabla \rightsquigarrow \nabla + \dots
+%\eas
+Let $\lambda \in \Omega^1(N; E)$ such that $\Lambda \coloneqq \mathds{1}_E - \lambda \circ \rho$ is an automorphism of $E$. We then define the \textbf{field redefinitions} by 
+\ba\label{EqFieldRedefFuerA}
+\widetilde{A}^\lambda
+&\coloneqq 
+\mleft( \Phi^* \Lambda \mright) (A)+ \Phi^! \lambda,
+\\
+\widetilde{\nabla}^\lambda
+&\coloneqq
+\nabla
+	+ \mleft( \Lambda \circ \mathrm{d}^{\nabla^{\mathrm{bas}}} \circ \Lambda^{-1} \mright) \lambda,
+\label{FieldTrafoOfNabla} \\
+\widetilde{\kappa}^\lambda
+&\coloneqq
+\kappa \circ \mleft( \Lambda^{-1}, \Lambda^{-1} \mright),
+\label{FieldTrafoOfKappa} \\
+\widetilde{g}^\lambda
+&\coloneqq
+g \circ \mleft( \widehat{\Lambda}^{-1}, \widehat{\Lambda}^{-1} \mright), \label{FieldTrafoOfG}
+\ea
+where $\widehat{\Lambda} \coloneqq \mathds{1}_{\mathrm{T}N} - \rho \circ \lambda$, and for all $X, Y \in \mathfrak{X}(N)$ we also define
+\ba
+&\widetilde{\zeta}^\lambda\mleft(\widehat{\Lambda}(X),\widehat{\Lambda}(Y)\mright)
+\nonumber \\
+&\coloneqq
+\Lambda\bigl(
+	\zeta\mleft( X, Y \mright)
+\bigr)
+	- \mleft(\mathrm{d}^{\widetilde{\nabla}^\lambda} \lambda\mright)(X,Y)
+	+ t_{\widetilde{\nabla}^\lambda_\rho}(\lambda(X), \lambda(Y)).
+\ea
+\end{definition}
+\end{frame}
+
+\begin{frame}
+\begin{proposition}[{[S.-R. F.]}]
+\begin{itemize}
+	\item Field redefinitions define an equivalence relation of CYMH gauge theories
+	\item $\widetilde{\mathfrak{L}}^\lambda_{\mathrm{CYMH}} = \mathfrak{L}_{\mathrm{CYMH}}$
+\end{itemize}
+\end{proposition}
+%\vfill
+\pause
+Let us now apply a field redefinition in order to study whether $\nabla$ and $\zeta$ can become flat and zero, respectively.
+\end{frame}
+}
+
+\subsection{Lie algebra bundles}
+
+{
+\setbeamertemplate{footline}{}
+\begin{frame}{What happens in the case of Lie algebra bundles?}
+\begin{example}[Lie algebra bundles (LABs)]
+\begin{itemize}[<+->]
+	\item $E = K$ an LAB ($\rho \equiv 0$) with a field of Lie brackets $\mleft[ \cdot, \cdot \mright]_K \in \Gamma\mleft( \bigwedge^2K^* \otimes K \mright)$ which restricts to the bracket of a given Lie algebra $\mathfrak{g}$
+\end{itemize}
+\pause
+Compatibilities:
+\begin{itemize}[<+->]
+	\item $\kappa$ needs to be $\mathrm{ad}$-invariant
+	\item We need
+\ba
+\nabla_Y\mleft( \mleft[ \mu, \nu \mright]_K \mright)
+&=
+\mleft[ \nabla_Y \mu, \nu \mright]_K
+	+ \mleft[ \mu, \nabla_Y \nu \mright]_K, \\
+R_\nabla(Y, Z) \mu
+&=
+\mleft[ \zeta(Y, Z), \mu \mright]_K
+\ea
+for all $Y, Z \in \mathfrak{X}(N)$ and $\mu, \nu \in \Gamma(K)$.
+\end{itemize}
+\end{example}
+\end{frame}
+%Skip this slide, just take first and last bullet point
+\begin{frame}
+\begin{theorem}[Invariant for LABs, {[S.-R. F.]}]
+We have
+\ba	
+\mathrm{d}^{\widetilde{\nabla}^\lambda} \widetilde{\zeta}^\lambda = \mathrm{d}^\nabla \zeta,
+\ea
+and $\mathrm{d}^\nabla \zeta$ has values in the centre of $K$.
+	%\item $\mathrm{d}^\nabla \zeta$ has values in the centre $Z(K)$ of $K$, \textit{i.e.}~$\mathrm{d}^\nabla \zeta \in \Omega^3(N; Z(K))$
+	%\item $\nabla$ restricts onto $Z(K)$ and is then flat $\Rightarrow$ differential $\mathrm{d}^{\nabla|_{Z(K)}}$
+	%\item This differential is independent of the field redefinition \newline $\Rightarrow$ differential $\mathrm{d}^\Xi \coloneqq \mathrm{d}^{\nabla|_{Z(K)}}$
+	%\item $\mathrm{d}^\Xi \mathrm{d}^\nabla \zeta = 0$
+\end{theorem}
+\end{frame}
+
+\begin{frame}{Behaviour of the field redefinition of $\zeta$}
+\begin{theorem}[Existence of non-classical theories, {[S.-R. F.]}]
+If $\mathrm{d}^\nabla \zeta \neq 0$, then there is no field redefinition such that $\widetilde{\zeta}^\lambda = 0$.
+\end{theorem}
+\pause
+\begin{remark}
+Starting with a classical theory:
+
+If $\mathrm{dim}(N) \geq 3$ and if Lie algebra $\mathfrak{g}$ has a non-zero centre, then we can always construct a pre-classical CYMH GT which is not a classical one by adding a $\zeta$ with $\mathrm{d}^\nabla \zeta \neq 0$.
+\end{remark}
+\pause
+However, by $R_\nabla = \mathrm{ad}_K \circ \zeta$ it may still be that $\nabla$ becomes flat.
+\end{frame}
+
+\begin{frame}{Turning to the field redefinition of $\nabla$:}
+\begin{theorem}[Differential on centre-valued forms, {[S.-R. F.]}]
+$\nabla$ restricts to the centre of $K$ and induces a differential $\mathrm{d}^\Xi$ on centre-valued forms. Moreover, $\mathrm{d}^\Xi$ is independent of the field redefinitions.
+\end{theorem}
+\pause
+\begin{proof}[Sketch of proof]
+Recall
+\bas
+\nabla_Y\mleft( \mleft[ \mu, \nu \mright]_K \mright)
+&=
+\mleft[ \nabla_Y \mu, \nu \mright]_K
+	+ \mleft[ \mu, \nabla_Y \nu \mright]_K, \\
+R_\nabla(Y, Z) \mu
+&=
+\mleft[ \zeta(Y, Z), \mu \mright]_K, \\
+\widetilde{\nabla}^\lambda_Y \mu
+&=
+\nabla_Y \mu
+- \mleft[\lambda(Y), \mu\mright]_K,
+\eas
+for all $Y, Z \in \mathfrak{X}(N)$ and $\mu, \nu \in \Gamma(K)$. Then insert $\mu$ with values in the centre.
+\end{proof}
+\end{frame}
+
+\begin{frame}
+\begin{theorem}[Closedness of $\mathrm{d}^\nabla \zeta$, {[S.-R. F.]}]
+We have
+\ba
+\mathrm{d}^\Xi \mathrm{d}^\nabla \zeta
+&=
+0.
+\ea
+\end{theorem}
+\pause
+\begin{definition}[Obstruction class, {[S.-R. F.]}]
+We define the \textbf{obstruction class} by
+\ba
+\mathrm{Obs}(\Xi)
+&\coloneqq
+\mleft[ \mathrm{d}^\nabla \zeta \mright]_{\mathrm{d}^\Xi}.
+\ea
+\end{definition}
+\pause
+\begin{proposition}[{[S.-R. F.]}]
+\begin{itemize}[<+->]
+	\item An invariant of the field redefinitions.
+	\item If $\nabla$ flat, then $\mathrm{Obs}(\Xi) = 0$.
+\end{itemize}
+\end{proposition}
+\end{frame}
+}
+
+{
+\setbeamertemplate{footline}{}
+\begin{frame}
+\begin{theorem}[Obstruction for non-pre-classical theories, {[S.-R. F.]}]
+If $\mathrm{Obs}(\Xi) \neq 0$, then there is no field redefinition such that $\widetilde{\nabla}^\lambda$ is flat.
+\end{theorem}
+\pause
+\begin{theorem}[Locally always pre-classical]
+If $N$ is contractible, then there is a field redefinition such that $\widetilde{\nabla}^\lambda$ is flat.
+\end{theorem}
+\pause
+\begin{remark}
+Second theorem follows as a result by K.~Mackenzie (General Theory of Lie Groupoids and Algebroids. \textit{London Mathematical Society Lecture Note Series}, 213, 2005). Mackenzie derived $\mathrm{Obs}(\Xi)$ in the context of extending Lie algebroids by LABs.
+\end{remark}
+\end{frame}
+}
+
+\renewcommand\insertreferences{{\tiny  K. Mackenzie. General Theory of Lie Groupoids and Algebroids. \newline \textit{London Mathematical Society Lecture Note Series}, 213, 2005.}}
+
+\begin{frame}
+\begin{example}[Zero obstruction class not necessarily pre-classical]
+Let $P$ be the Hopf fibration
+\begin{center}
+	\begin{tikzcd}[ampersand replacement=\&, column sep=small]
+		\mathrm{SU}(2) \arrow{r}	\& \mathds{S}^7 \arrow{d} \\
+			\& \mathds{S}^4
+	\end{tikzcd}
+\end{center}
+Then for the adjoint bundle
+\bas
+K
+&\coloneqq
+P \times_{\mathrm{SU}(2)} \mathfrak{su}(2)
+\coloneqq 
+\mleft( \mathds{S}^7 \times \mathfrak{su}(2) \mright) \Big/ \mathrm{SU}(2)
+\eas
+we have a non-flat $\nabla$ satisfying the compatibility conditions such that all of its field redefinitions are not flat either, but $\mathrm{Obs}(\Xi) = 0$.
+%we have the Atiyah sequence
+%\begin{center}
+	%\begin{tikzcd}[ampersand replacement=\&, column sep=small]
+		%0 \arrow{r} \& K \arrow{r} \& \mathrm{T}P \Big/ \mathrm{SU}(2) \arrow{r} \& \mathrm{T}\mathds{S}^4 \arrow{r} \& 0.
+	%\end{tikzcd}
+%\end{center}
+%
+%Then $\mathrm{Obs}(\Xi_{\mathrm{Ext}}) = 0$ because of the fact that $K$ is semisimple, but there is no flat derivation law, especially no flat derivation law covering $\Xi_{\mathrm{Ext}}$.
+\end{example}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Maybe skip it
+%\begin{frame}
+%\begin{theorem}[Obstruction of extensions]
+%If $\mathrm{Obs}(\Xi) = 0$, then it exists a Lie algebroid $E^\prime$ such that there is a short exact sequence of Lie algebroids, 
+%\begin{center}
+	%\begin{tikzcd}[ampersand replacement=\&, column sep=small]
+		%0 \arrow{r} \& K \arrow{r} \& E^\prime \arrow{r}{\pi} \& \mathrm{T}N \arrow{r} \& 0.
+	%\end{tikzcd}
+%\end{center}
+%
+%If $N$ is additionally contractible, then there is a flat connection on $K$ as the adjoint of a transversal $\chi: \mathrm{T}N \to E^\prime$ ($\pi \circ \chi = \mathds{1}_{\mathrm{T}N}$).
+%\end{theorem}
+%\pause
+%\begin{idea}[Construction of the bracket in $E^\prime$]
+%$E^\prime \coloneqq \mathrm{T}N \oplus K$, then
+%\bas
+%\mleft[
+	%(Y, \nu), (Z, \mu)
+%\mright]_{E^\prime}
+%&\coloneqq
+%\mleft(
+	%[Y, Z], \mleft[ \nu, \mu \mright]_K + \nabla_Y \mu - \nabla_Z \nu - \zeta(Y, Z)
+%\mright)
+%\eas
+%for all $(Y, \nu), (Z, \mu) \in E^\prime$.
+%\end{idea}
+%\end{frame}
+{
+\setbeamertemplate{footline}{}
+\begin{frame}{Summary}
+\begin{remark}
+Locally, LABs are always pre-classical but not necessarily classical. 
+
+In general, $\mathrm{Obs}(\Xi)=0$ does not imply a flat connection.
+\end{remark}
+\pause
+
+So, what actually happens in the adjoint bundle of $\mathds{S}^7 \to \mathds{S}^4$? 
+
+$\rightsquigarrow$ Integration
+%\begin{remark}[What about tangent bundles?]
+%Tangent bundles are locally always pre-classical. However, globally there are curved examples, \textit{e.g.}~the tangent bundle of $\mathds{S}^7$ for which there is no field redefinition with a flat $\widetilde{\nabla}^\lambda$.
+%\end{remark}
+%\pause
+%What about general Lie algebroids?...
+\end{frame}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{Tangent bundles}
+%
+%{
+%\setbeamertemplate{footline}{}
+%\begin{frame}{What happens in the case of tangent bundles?}
+%\begin{example}[Tangent bundles]
+%\begin{itemize}[<+->]
+	%\item $E = \mathrm{T}N$, $\rho = \mathds{1}_E$, $\kappa = g$
+	%\item $R_\nabla = \nabla^{\mathrm{bas}} t_{\nabla^{\mathrm{bas}}}$ $\Rightarrow$ Canonically $\zeta \coloneqq - t_{\nabla^{\mathrm{bas}}}$
+%\end{itemize}
+%\pause
+%Compatibilities:
+%\begin{itemize}[<+->]
+	%\item Compatibility conditions just impose a \textbf{flat metric connection $\nabla^{\mathrm{bas}}$}.
+	%%\item Flatness implies 
+	%%\bas
+	%%\mleft[ e_a, e_b \mright]
+	%%&\equiv
+	%%\text{const}^c_{ab} ~ e_c
+	%%\eas
+	%%where $\mleft( e_a \mright)_a$ is a local parallel frame of $\nabla^{\mathrm{bas}}$.
+%\end{itemize}
+%\end{example}
+%\pause
+%\begin{remark}
+%Here
+%\bas
+%\nabla^{\mathrm{bas}}_X Y
+%&=
+%[X, Y]
+	%+ \nabla_Y X
+%\eas
+%for all $X, Y \in \mathfrak{X}(N)$.
+%\end{remark}
+%\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Maybe do not speak about basic curvature anymore. Maybe find an earlier reference
+%\begin{frame}
+%\begin{theorem}[Tangent bundles are locally pre-classical, {[S.-R. F.]}]
+%Let $N = \mathbb{R}^n$ ($n \in \mathbb{N}_0$) be an Euclidean space as smooth manifold. Then there is a field redefinition such that $\widetilde{\nabla}^\lambda$ is flat.
+%\end{theorem}
+%\end{frame}
+%}
+%
+%{
+%\makeatletter
+%\setbeamertemplate{footline}
+%{
+  %\leavevmode%
+  %\hbox{%
+  %\begin{beamercolorbox}[wd=.09\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    %\usebeamerfont{author in head/foot}
+		%Sources
+  %\end{beamercolorbox}%
+  %\begin{beamercolorbox}[wd=.91\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    %\usebeamerfont{title in head/foot}
+		%R. B. Gardner. \textit{The Method of Equivalence and its Applications}. SIAM, Philadelphia,1989.
+  %\end{beamercolorbox}%
+  %%\begin{beamercolorbox}[wd=.175\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    %%\usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+    %%%\insertframenumber{} 
+		%%%/ \inserttotalframenumber\hspace*{2ex} 
+  %%\end{beamercolorbox}
+	%}%
+  %\vskip0pt%
+%}
+%\begin{frame}{What about global examples?}
+%\begin{theorem}
+%Let $N$ be a smooth compact and simply connected manifold, and assume we have a connection $\nabla$ on $E\coloneqq\mathrm{T}N$ such that $\nabla$ and $\nabla^{\mathrm{bas}}$ are flat. Then $N$ is diffeomorphic to a Lie group.
+%\end{theorem}
+%\pause
+%\begin{proof}[Sketch of the proof]
+%\begin{enumerate}[<+->]
+	%\item Flat $\nabla$ \& simply connected: Global trivialization of $\mathrm{T}N$
+	%\item \& Flat $\nabla^{\mathrm{bas}}$: $\mathrm{T}N \cong N \times \mathfrak{g}$, $\mathfrak{g}$ a Lie algebra
+	%\item Defines a form satisfying the Maurer-Cartan equation
+	%\item Using compactness: $N$ a Lie group
+%\end{enumerate}
+%\end{proof}
+%\pause
+%$\rightsquigarrow$ Hence, to avoid flatness of $\nabla$ we need to avoid a Lie group structure on $N$.
+%\end{frame}
+%}
+%{
+%\setbeamertemplate{footline}{}
+%\begin{frame}
+%\begin{theorem}[Global example: Unit octonions, {[S.-R. F.]}]
+%$\mathbb{S}^7$ admits a CYMH gauge theory such that the related connection $\nabla$ on $E \coloneqq \mathrm{T}\mathds{S}^7$ is not flat. Moreover, there is no field redefinition $\widetilde{\nabla}^\lambda$ of $\nabla$ such that $\widetilde{\nabla}^\lambda$ is flat.
+%\end{theorem}
+%\pause
+%\begin{proof}[Sketch of the proof]
+%Use the canonical trivialization $\mleft( Y_i \mright)_{i=1}^7$ of $\mathrm{T}\mathds{S}^7$: $\mathds{S}^7$ are the unit octonions, and we have seven imaginary numbers $(e_i)_{i=1}^7$, $e_i^2 = -1$. Then
+%\ba
+%\mleft.Y_i\mright|_z
+%&\coloneqq
+%e_i \cdot z
+%\ea
+%for all $z \in \mathds{S}^7$.
+%\end{proof}
+%%\pause
+%%\begin{remark}
+%%
+%\end{remark}
+%\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Integration}
+
+{
+\setbeamertemplate{footline}{}
+
+\begin{frame}
+
+\end{frame}
+
+}
+
+\section{Conclusion}
+{
+\setbeamertemplate{footline}{}
+\begin{frame}{Summary: When are theories flat?}
+\begin{table}[h!]
+		\begin{tabularx}{\textwidth}{X| c c} 
+			\rowcolor{gray}
+			& Locally & Globally \\ \hline
+			LABs & Pre-classical & $\mathrm{ad}(\mathds{S}^7 \to \mathds{S}^4)$ curved \\
+			\rowcolor{Gray}
+			Tangent bundles & Pre-classical & $\mathrm{T}\mathds{S}^7$ curved \\
+		\end{tabularx}
+\end{table}
+\begin{remark}
+What about general Lie algebroids? Find an invariant like $\mathrm{d}^\nabla \zeta$
+
+$\rightsquigarrow$ $\mathrm{d}^\nabla \zeta$ measures the failure of the Bianchi identity of $G$
+
+$\rightsquigarrow$ Generalised Bianchi identity?
+\end{remark}
+\end{frame}
+
+\begin{frame}{Hope: Structural Lie groupoids}
+%\begin{table}[h!]
+		%\begin{tabularx}{\textwidth}{X| c c} 
+			%\rowcolor{gray}
+			%Gauge theory & Minimal coupling evolves around... \\ \hline
+			%Yang-Mills & $\mathrm{GL}(V) \curvearrowright V$ \\
+			%& $V$ vector space \\
+			%\rowcolor{Gray}
+			%Curved Yang-Mills & $\mathrm{Aut}_{\mathrm{base}}(V) \curvearrowright V$ \\ 
+			%\rowcolor{Gray}
+			%& $V$ vector bundle, $\mathrm{Aut}_{\mathrm{base}}$ base-preserving \\
+			%Curved Yang-Mills-Higgs & $\mathrm{Aut}_{\neg\mathrm{base}}(V) \curvearrowright V$ \\
+			%& $V$ vector bundle, $\mathrm{Aut}_{\mathrm{base}}$ base-preserving
+		%\end{tabularx}
+%\end{table}
+\begin{table}[h!]
+		\begin{tabularx}{\textwidth}{X| c c} 
+			\rowcolor{gray}
+			Gauge theory & Structure \\ \hline
+			Yang-Mills & Lie group $G$ \\
+			\rowcolor{Gray}
+			Curved Yang-Mills & Lie group bundle $\mathcal{G}$ \\ 
+			Curved Yang-Mills-Higgs & Lie groupoid $\mathfrak{G}$
+		\end{tabularx}
+\end{table}
+\end{frame}
+
+\begin{center}
+	\begin{tikzcd}
+		& \arrow{ld} \mathfrak{G} \arrow{rd} & \\
+		M & \arrow{r} & N
+	\end{tikzcd}
+\end{center}
+}
+\thispagestyle{empty}
+\topmargin -3.46 cm
+\vspace*{\fill}
+\begin{center}
+\huge \textbf{Thank you!}
+\end{center}
+\vspace*{\fill}
+
+\end{document}
+
