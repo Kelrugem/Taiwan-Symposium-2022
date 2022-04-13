@@ -901,7 +901,7 @@ which is equivalent to $N * \mathcal{G} \to N$.
 Still a fibre bundle
 \begin{center}
 	\begin{tikzcd}[ampersand replacement=\&]
-	G \arrow{r} \& \mathcal{P} \arrow{d}{\pi_{\mathcal{P}}} \\
+	G \arrow{r} \& \mathcal{P} \arrow{d} \\
 	\& M
 	\end{tikzcd}
 \end{center}
@@ -923,64 +923,32 @@ simply transitive on fibres of $\mathcal{P}$.
 \end{frame}
 
 \begin{frame}{Horizontal distribution, definition}
-	\begin{definition}[Connection, {[S.-R.\ F.]}]
-	Let $H$ be a horizontal bundle of $\mathcal{P}$. Then $H$ is called a \textbf{connection on $\mathcal{P}$} if
-	\ba
-	\mleft( \mathrm{D}_p r_{\sigma} - \mleft.\mleft(\pi_{\mathcal{P}}^!\widetilde{\Delta \sigma}\mright)\mright|_{p\cdot \sigma_{\pi_{\mathcal{P}}(p)} } \mright)
-	\mleft( H_p \mright)
-	&=
-	H_{p\cdot \sigma_{\pi_{\mathcal{P}}(p)} }
-	\ea
-	for all $\sigma \in \Gamma(\mathcal{G})$,
-	where $\widetilde{\Delta \sigma}$ is the fundamental vector field of $\Delta\sigma$ which is the \textbf{Darboux derivative of $\sigma$} given by
-	\ba
-	\Delta\sigma
-	&\coloneqq
-	\sigma^! \mu_{\mathcal{G}}.
-	\ea
+	\begin{definition}[Horizontal distribution, [S.-R.\ F.]]
+	Let $\mathup{V}\mathcal{P}$ be the vertic
 	\end{definition}
-\end{frame}
-
-\begin{frame}
-\begin{example}
-Let $P$ be a $G$-principal bundle, equipped with a "classical" connection. 
-\pause
-
-$\Rightarrow$ Horizontal distribution on associated fibre bundles.
-\pause
-
-$\Rightarrow$ Horizontal distribution on the inner LGB $c(P)$ of $P$ given by
-\ba
-c(P) \coloneqq (P \times G) \Big/ G,
-\ea
-where $G$ acts on itself by conjugation.
-\pause
-
-$\Rightarrow$ Connection on $\mathcal{P} = c(P)$.
-\end{example}
 \end{frame}
 }
 
 \section{Conclusion}
 {
 \setbeamertemplate{footline}{}
-\begin{frame}{Summary}
+\begin{frame}{Summary: When are theories flat?}
 \begin{table}[h!]
 		\begin{tabularx}{\textwidth}{X| c c} 
 			\rowcolor{gray}
 			& Locally & Globally \\ \hline
-			Curved Yang-Mills & Pre-classical & $\mathrm{ad}(\mathds{S}^7 \to \mathds{S}^4)$ curved 
-			%\\
-			%\rowcolor{Gray}
-			%Tangent bundles & Pre-classical & $\mathrm{T}\mathds{S}^7$ curved \\
+			LABs & Pre-classical & $\mathrm{ad}(\mathds{S}^7 \to \mathds{S}^4)$ curved \\
+			\rowcolor{Gray}
+			Tangent bundles & Pre-classical & $\mathrm{T}\mathds{S}^7$ curved \\
 		\end{tabularx}
 \end{table}
-\begin{remark}[Integrated point of view]
-This is probably linked to that an LGB is locally trivial 
+\begin{remark}
+What about general Lie algebroids? Find an invariant like $\mathrm{d}^\nabla \zeta$
 
-$\rightsquigarrow$ LGB action locally equivalent to a Lie group action
+$\rightsquigarrow$ $\mathrm{d}^\nabla \zeta$ measures the failure of the Bianchi identity of $G$
+
+$\rightsquigarrow$ Generalised Bianchi identity?
 \end{remark}
-
 \end{frame}
 
 \begin{frame}{Hope: Structural Lie groupoids}
@@ -1015,14 +983,6 @@ $\rightsquigarrow$ LGB action locally equivalent to a Lie group action
 		M \arrow{rr}{\Phi} \& \& N
 	\end{tikzcd}
 \end{center}
-
-\begin{remark}
-\begin{itemize}
-	\item Richer set of principal bundles, containing LGBs.
-	\item May result into obstruction statements for curved Yang-Mills-Higgs.
-\end{itemize}
-\end{remark}
-
 \end{frame}
 }
 \thispagestyle{empty}
