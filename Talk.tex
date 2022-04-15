@@ -582,7 +582,7 @@ If we have additionally $\zeta \equiv 0$, then we say that we have a \textbf{cla
 	\end{tikzcd}
 \end{center}
 
-$\rightsquigarrow$ Together with the compatibility conditions we  will have gauge invariance, that is,
+$\rightsquigarrow$ Together with the compatibility conditions we have gauge invariance, that is,
 \ba
 \delta_\varepsilon \mathfrak{L}_{\mathrm{CYMH}}
 &=
@@ -1054,7 +1054,9 @@ But:
 \end{frame}
 
 \begin{frame}{Connection on $\mathcal{P}$: Idea}
-\textcolor[rgb]{0,0.58,0}{$H$} a horizontal bundle of $\mathcal{P}$:
+\setbeamercovered{invisible}
+	\begin{minipage}[]{0.45\textwidth} 
+	\textcolor[rgb]{0,0.58,0}{$H$} a horizontal bundle of $\mathcal{P}$:
 	\begin{figure}
 	\begin{tikzpicture}[scale=1.2]
 		%Gray area
@@ -1069,9 +1071,9 @@ But:
 		\filldraw [fill=red, draw=red] (4.41,-1) circle (1pt);
 		\draw [<-, draw=blue] (5.16,1) to[out=275,in=85] (5.16,-1);
 		\draw [->] (4.41,-1) -- (4.71,-0.88);
-		\draw [->] (4.41,1) -- (4.71,2);
+		\draw [->] (4.41,1) -- (4.63,2);
 		\draw [->,dotted,thick] (4.41,1) -- (4.71,1.12);
-		\draw [dotted,thick] (4.71,2) -- (4.71,1.12);
+		\draw [<-,dotted,thick] (4.63,2) -- (4.71,1.12);
 		%Labels
 		\draw (3.2,1) node {\textcolor[rgb]{0,0.58,0}{$H_{p \cdot \sigma_x}$}};
 		\draw (3.2,-1) node {\textcolor[rgb]{0,0.58,0}{$H_p$}};
@@ -1079,9 +1081,21 @@ But:
 		\draw (3,2.2) node {$\mathcal{P}_U$};
 		\draw (4.71,-0.6) node {$X$};
 		\draw (5,2.25) node {$\mathrm{D}_pr_\sigma(X)$};
-		\draw (5.25,1.56) node {$\thicksim \mathrm{D}_x\sigma$};
+		\draw (5.5,1.56) node {$\thicksim \mathrm{D}_x\sigma(X)$};
+		%Text
 	\end{tikzpicture}
 	\end{figure}
+	\end{minipage}\hfill
+	\pause
+	\begin{minipage}[]{0.45\textwidth} 
+	Properties of the shift:
+	\begin{itemize}
+		\item Vertical
+		\item Only vertical part of $\mathrm{D}\sigma$ matters
+	\end{itemize}
+	\pause
+	$\Rightarrow$ Introduce connection on $\mathcal{G}$
+	\end{minipage}
 \end{frame}
 
 \begin{frame}{Horizontal distribution, definition}
@@ -1181,7 +1195,7 @@ $\rightsquigarrow$ LGB action locally equivalent to a Lie group action
 \begin{remark}
 \begin{itemize}
 	\item Richer set of principal bundles, containing LGBs.
-	\item May result into obstruction statements for curved Yang-Mills-Higgs.
+	\item May result into obstruction statements for curved Yang-Mills-Higgs gauge theories.
 \end{itemize}
 \end{remark}
 

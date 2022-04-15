@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.31)  15 APR 2022 17:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.31)  16 APR 2022 01:46
 entering extended mode
 **./Talk.tex
 (Talk.tex
@@ -1942,6 +1942,10 @@ Overfull \hbox (7.04929pt too wide) in paragraph at lines 1054--1054
 
 ] [71
 
+] [72
+
+] [73
+
 ]
 \tf@nav=\write7
 \openout7 = `Talk.nav'.
@@ -1960,10 +1964,10 @@ Package logreq Info: Writing requests to 'Talk.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 48402 strings out of 478907
- 1121231 string characters out of 2851891
- 2978134 words of memory out of 3000000
- 65284 multiletter control sequences out of 15000+600000
+ 48408 strings out of 478907
+ 1121310 string characters out of 2851891
+ 2978133 words of memory out of 3000000
+ 65286 multiletter control sequences out of 15000+600000
  505073 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,29n,124p,1131b,8471s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1997,9 +2001,9 @@ nts/type1/public/lm/lmsy8.pfb><C:/Users/kelru/AppData/Local/Programs/MiKTeX/fon
 ts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/kelru/AppData/Local/Progr
 ams/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/kelru/AppDa
 ta/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathscr.pfb>
-Output written on Talk.pdf (71 pages, 1367135 bytes).
+Output written on Talk.pdf (73 pages, 1389613 bytes).
 PDF statistics:
- 4472 PDF objects out of 5155 (max. 8388607)
- 160 named destinations out of 1000 (max. 500000)
+ 4565 PDF objects out of 5155 (max. 8388607)
+ 164 named destinations out of 1000 (max. 500000)
  3337 words of extra memory for PDF output out of 10000 (max. 10000000)
 
