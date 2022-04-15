@@ -17,4 +17,4 @@
 \defcounter {refsection}{0}\relax 
 \beamer@sectionintoc {3}{Integration (WIP)}{54}{0}{3}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {4}{Conclusion}{66}{0}{4}
+\beamer@sectionintoc {4}{Conclusion}{69}{0}{4}
