@@ -526,9 +526,9 @@ where $t_{\nabla^{\mathrm{bas}}}$ is the torsion of $\nabla^{\mathrm{bas}}$ on $
 \end{definition}
 \pause
 \begin{definition}[Generalised field strength]
-Let $\zeta$ be an element of $\Omega^2(N; E)$, then we define the \textbf{generalised field strength $G$} by
+Let $\zeta$ be an element of $\Omega^2(N; E)$, then we define the \textbf{generalised field strength $\mathcal{F}$} by
 \ba
-G(\Phi,A)
+\mathcal{F}(\Phi,A)
 &\coloneqq
 F(\Phi, A)
 	+ \frac{1}{2} (\Phi^*\zeta)\mleft( \mathfrak{D}^A \Phi \stackrel{\wedge}{,} \mathfrak{D}^A \Phi \mright).
@@ -542,7 +542,7 @@ Let $\kappa$ be a fibre metric on $E$, then the \textbf{curved Yang-Mills-Higgs 
 \ba
 \mathfrak{L}_{\mathrm{CYMH}}(\Phi, A)
 &\coloneqq
-- \frac{1}{2} \mleft( \Phi^*\kappa \mright)\mleft(G(\Phi, A) \stackrel{\wedge}{,} *G(\Phi, A) \mright)
+- \frac{1}{2} \mleft( \Phi^*\kappa \mright)\bigl(\mathcal{F}(\Phi, A) \stackrel{\wedge}{,} *\mathcal{F}(\Phi, A) \bigr)
 \nonumber \\
 &\hspace{1cm}
 	+ \mleft( \Phi^*g \mright)\mleft(\mathfrak{D}^A \Phi \stackrel{\wedge}{,} *\mathfrak{D}^A \Phi \mright)
@@ -588,6 +588,14 @@ $\rightsquigarrow$ Together with the compatibility conditions we have gauge inva
 &=
 0.
 \ea
+\pause
+\begin{remark}[{[S.-R.\ F.]}]
+If $\rho \equiv 0$, then $\varepsilon \in \Gamma(\Phi^*E)$ and
+\bas
+\delta_\varepsilon \Phi&=0,&
+\delta_\varepsilon A&= \mleft[ \varepsilon, A \mright]_E -\mathrm{d}^{\Phi^*\nabla}\varepsilon.
+\eas
+\end{remark}
 \end{frame}
 }
 
@@ -848,25 +856,25 @@ $\rightsquigarrow$ Integration
 }
 
 \begin{frame}
-\begin{definition}[LGB actions]
+\begin{definition}[LGB actions, simplified]
 \begin{center}
 	\begin{tikzcd}[ampersand replacement=\&, column sep = small, row sep = small]
-	\& \mathcal{G} \arrow{d}{\pi} \\
-	N \arrow{r}{f} \& M
+	\& \mathcal{G} \arrow{d} \\
+	\mathcal{P} \arrow{r}{\pi} \& M
 	\end{tikzcd}
 \end{center}
-A \textbf{right-action of $\mathcal{G}$ on $N$} is a smooth map 
+$\mathcal{P} \stackrel{\pi}{\to} M$ a fibre bundle. A \textbf{right-action of $\mathcal{G}$ on $\mathcal{P}$} is a smooth map 
 %\bas
-$N * \mathcal{G} \coloneqq f^*\mathcal{G} \to N$,
+$\mathcal{P} * \mathcal{G} \coloneqq \pi^*\mathcal{G} = \mathcal{P} \times_M \mathcal{G} \to \mathcal{P}$,
 $(p, g) \mapsto p \cdot g$,
 %\eas
 satisfying the following properties:
 \ba\label{InvarianceOffUnderGAction}
-f(p \cdot g) &= \pi(g),\\
+\pi(p \cdot g) &= \pi(p),\\
 (p \cdot g) \cdot h &= p \cdot (gh),\\
-p \cdot e_{f(p)} &= p
+p \cdot e_{\pi(p)} &= p
 \ea
-for all $p \in N$ and $g, h \in \mathcal{G}_{f(p)}$, where $e_{f(p)}$ is the neutral element of $\mathcal{G}_{f(p)}$.
+for all $p \in \mathcal{P}$ and $g, h \in \mathcal{G}_{\pi(p)}$, where $e_{\pi(p)}$ is the neutral element of $\mathcal{G}_{\pi(p)}$.
 \end{definition}
 \end{frame}
 
@@ -884,12 +892,12 @@ for all $p \in N$ and $g, h \in \mathcal{G}_{f(p)}$, where $e_{f(p)}$ is the neu
 \begin{example}[Recovering Lie group action]
 $\bullet$ Either by $M = \{*\}$.
 
-$\bullet$ Or by $\mathcal{G} \cong M \times G$, then also $N * \mathcal{G} \cong N \times G$, and we can define
+$\bullet$ Or by $\mathcal{G} \cong M \times G$, then also $\mathcal{P} * \mathcal{G} \cong \mathcal{P} \times G$, and we can define
 \bas
-N \times G &\to N, \\
-(p, g) &\mapsto p \cdot g \coloneqq p \cdot \bigl( f(p), g \bigr),
+\mathcal{P} \times G &\to \mathcal{P}, \\
+(p, g) &\mapsto p \cdot g \coloneqq p \cdot \bigl( \pi(p), g \bigr),
 \eas
-which is equivalent to $N * \mathcal{G} \to N$.
+which is equivalent to $\mathcal{P} * \mathcal{G} \to \mathcal{P}$.
 \end{example}
 \end{frame}
 }
@@ -901,7 +909,7 @@ which is equivalent to $N * \mathcal{G} \to N$.
 Still a fibre bundle
 \begin{center}
 	\begin{tikzcd}[ampersand replacement=\&]
-	G \arrow{r} \& \mathcal{P} \arrow{d}{\pi_{\mathcal{P}}} \\
+	G \arrow{r} \& \mathcal{P} \arrow{d}{\pi} \\
 	\& M
 	\end{tikzcd}
 \end{center}
@@ -949,7 +957,7 @@ simply transitive on fibres of $\mathcal{P}$, and "suitable" atlas.
 \draw (4.25, -3) node {$U$};
 \draw (0,0) node {$\mathcal{P}$};
 \draw [->] (0,-0.4) -- (0,-3.1);
-\draw (0.6,-1.75) node {$\pi_{\mathcal{P}}$};
+\draw (0.4,-1.75) node {$\pi$};
 \draw (3.5,1) node {\textcolor[rgb]{1,0,0}{$p \cdot g$}};
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \draw (10.5,-3.5) to[out=10,in=170] (14.75,-3.5) to[out=350,in=190] (19,-3.5); %hori M
@@ -965,7 +973,7 @@ simply transitive on fibres of $\mathcal{P}$, and "suitable" atlas.
 
 \draw (19,0) node {$\mathcal{G}$}; %These three lines are for LGB projection
 \draw [->] (19,-0.4) -- (19,-3.1);
-\draw (18.5,-1.75) node {$\pi_{\mathcal{G}}$};
+%\draw (18.5,-1.75) node {$\pi_{\mathcal{G}}$};
 
 \draw (15.5,2) node {$\mathcal{G}_U$};
 \draw (14,-3.4) node {$($};
@@ -1018,7 +1026,7 @@ But:
 \draw (4.25, -3) node {$U$};
 \draw (0,0) node {$\mathcal{P}$};
 \draw [->] (0,-0.4) -- (0,-3.1);
-\draw (0.6,-1.75) node {$\pi_{\mathcal{P}}$};
+\draw (0.4,-1.75) node {$\pi$};
 \draw (3.5,1) node {\textcolor[rgb]{1,0,0}{$p \cdot \sigma_x$}};
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \draw (10.5,-3.5) to[out=10,in=170] (14.75,-3.5) to[out=350,in=190] (19,-3.5); %hori M
@@ -1035,7 +1043,7 @@ But:
 
 \draw (19,0) node {$\mathcal{G}$}; %These three lines are for LGB projection
 \draw [->] (19,-0.4) -- (19,-3.1);
-\draw (18.5,-1.75) node {$\pi_{\mathcal{G}}$};
+%\draw (18.5,-1.75) node {$\pi_{\mathcal{G}}$};
 
 \draw (15.5,2) node {$\mathcal{G}_U$};
 \draw (14,-3.4) node {$($};
@@ -1049,7 +1057,7 @@ But:
 \end{figure}
 
 \bas
-\text{Use } \sigma \in \Gamma(\mathcal{G}): r_\sigma(p) \coloneqq p \cdot \sigma_{\pi_{\mathcal{P}}(p)}
+\text{Use } \sigma \in \Gamma(\mathcal{G}): r_\sigma(p) \coloneqq p \cdot \sigma_{\pi(p)}
 \eas
 \end{frame}
 
@@ -1095,47 +1103,48 @@ But:
 	\end{itemize}
 	\pause
 	$\Rightarrow$ Introduce connection on $\mathcal{G}$
+	$\Rightarrow$ $\nabla$ on the LAB $\mathcal{g}$ of $\mathcal{G}$
 	\end{minipage}
 \end{frame}
-
-\begin{frame}{Horizontal distribution, definition}
-	\begin{definition}[Connection, {[S.-R.\ F.]}]
-	Let $H$ be a horizontal bundle of $\mathcal{P}$. Then $H$ is called a \textbf{connection on $\mathcal{P}$} if
-	\ba
-	\mleft( \mathrm{D}_p r_{\sigma} - \mleft.\mleft(\pi_{\mathcal{P}}^!\widetilde{\Delta \sigma}\mright)\mright|_{p\cdot \sigma_{\pi_{\mathcal{P}}(p)} } \mright)
-	\mleft( H_p \mright)
-	&=
-	H_{p\cdot \sigma_{\pi_{\mathcal{P}}(p)} }
-	\ea
-	for all $\sigma \in \Gamma(\mathcal{G})$,
-	where $\widetilde{\Delta \sigma}$ is the fundamental vector field of $\Delta\sigma$ which is the \textbf{Darboux derivative of $\sigma$} given by
-	\ba
-	\Delta\sigma
-	&\coloneqq
-	\sigma^! \mu_{\mathcal{G}}.
-	\ea
-	\end{definition}
-\end{frame}
-
-\begin{frame}
-\begin{example}
-Let $P$ be a $G$-principal bundle, equipped with a "classical" connection. 
-\pause
-
-$\Rightarrow$ Horizontal distribution on associated fibre bundles.
-\pause
-
-$\Rightarrow$ Horizontal distribution on the inner LGB $c(P)$ of $P$ given by
-\ba
-c(P) \coloneqq (P \times G) \Big/ G,
-\ea
-where $G$ acts on itself by conjugation.
-\pause
-
-$\Rightarrow$ Connection on $\mathcal{P} = c(P)$.
-\end{example}
-\end{frame}
-}
+%
+%\begin{frame}{Horizontal distribution, definition}
+	%\begin{definition}[Connection, {[S.-R.\ F.]}]
+	%Let $H$ be a horizontal bundle of $\mathcal{P}$. Then $H$ is called a \textbf{connection on $\mathcal{P}$} if
+	%\ba
+	%\mleft( \mathrm{D}_p r_{\sigma} - \mleft.\mleft(\pi_{\mathcal{P}}^!\widetilde{\Delta \sigma}\mright)\mright|_{p\cdot \sigma_{\pi_{\mathcal{P}}(p)} } \mright)
+	%\mleft( H_p \mright)
+	%&=
+	%H_{p\cdot \sigma_{\pi_{\mathcal{P}}(p)} }
+	%\ea
+	%for all $\sigma \in \Gamma(\mathcal{G})$,
+	%where $\widetilde{\Delta \sigma}$ is the fundamental vector field of $\Delta\sigma$ which is the \textbf{Darboux derivative of $\sigma$} given by
+	%\ba
+	%\Delta\sigma
+	%&\coloneqq
+	%\sigma^! \mu_{\mathcal{G}}.
+	%\ea
+	%\end{definition}
+%\end{frame}
+%
+%\begin{frame}
+%\begin{example}
+%Let $P$ be a $G$-principal bundle, equipped with a "classical" connection. 
+%\pause
+%
+%$\Rightarrow$ Horizontal distribution on associated fibre bundles.
+%\pause
+%
+%$\Rightarrow$ Horizontal distribution on the inner LGB $c(P)$ of $P$ given by
+%\ba
+%c(P) \coloneqq (P \times G) \Big/ G,
+%\ea
+%where $G$ acts on itself by conjugation.
+%\pause
+%
+%$\Rightarrow$ Connection on $\mathcal{P} = c(P)$.
+%\end{example}
+%\end{frame}
+%}
 
 \section{Conclusion}
 {
