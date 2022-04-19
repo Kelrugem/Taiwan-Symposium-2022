@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.31)  17 APR 2022 22:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.31)  19 APR 2022 22:49
 entering extended mode
 **./Talk.tex
 (Talk.tex
@@ -1712,13 +1712,6 @@ Overfull \hbox (2.12502pt too wide) has occurred while \output is active
 [8
 
 ]
-Overfull \hbox (2.12502pt too wide) has occurred while \output is active
-[][][][] 
- []
-
-[9
-
-]
 LaTeX Font Info:    Font shape `OT1/lmss/bx/it' in size <10.95> not available
 (Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 370
 .
@@ -1727,11 +1720,18 @@ Overfull \hbox (2.12502pt too wide) has occurred while \output is active
 [][][][] 
  []
 
-[10
+[9
+
+] [10
 
 ] [11
 
-] [12
+]
+Overfull \hbox (2.12502pt too wide) has occurred while \output is active
+[][][][] 
+ []
+
+[12
 
 ]
 Overfull \hbox (2.12502pt too wide) has occurred while \output is active
@@ -1761,12 +1761,7 @@ Overfull \hbox (2.12502pt too wide) has occurred while \output is active
 
 [16
 
-]
-Overfull \hbox (2.12502pt too wide) has occurred while \output is active
-[][][][] 
- []
-
-[17
+] [17
 
 ] [18
 
@@ -1794,13 +1789,13 @@ Overfull \hbox (2.12502pt too wide) has occurred while \output is active
 
 ] [30
 
-] [31
-
 ]
 Overfull \vbox (5.1288pt too high) detected at line 652
  []
 
-[32
+[31
+
+] [32
 
 ] [33
 
@@ -1813,8 +1808,6 @@ Overfull \vbox (5.1288pt too high) detected at line 652
 ] [37
 
 ] [38
-
-] [39
 
 ]
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -1832,11 +1825,17 @@ LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <10> not available
 LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <7> not available
 (Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 716.
 
- [40
+ [39
+
+] [40
 
 ] [41
 
-] [42
+]
+Overfull \vbox (8.6498pt too high) detected at line 740
+ []
+
+[42
 
 ]
 Overfull \vbox (8.6498pt too high) detected at line 740
@@ -1844,11 +1843,7 @@ Overfull \vbox (8.6498pt too high) detected at line 740
 
 [43
 
-]
-Overfull \vbox (8.6498pt too high) detected at line 740
- []
-
-[44
+] [44
 
 ] [45
 
@@ -1862,14 +1857,14 @@ Overfull \vbox (8.6498pt too high) detected at line 740
 
 ] [50
 
-] [51
-
 ]
 Overfull \hbox (2.12502pt too wide) has occurred while \output is active
 [][][][] 
  []
 
-[52
+[51
+
+] [52
 
 ] [53
 
@@ -1877,23 +1872,27 @@ Overfull \hbox (2.12502pt too wide) has occurred while \output is active
 
 ] [55
 
-] [56
-
 ]
 Overfull \hbox (2.12502pt too wide) has occurred while \output is active
 [][][][] 
  []
 
+[56
+
+]
+Overfull \vbox (18.59836pt too high) detected at line 905
+ []
+
 [57
 
 ]
-Overfull \vbox (4.99835pt too high) detected at line 902
+Overfull \vbox (18.59836pt too high) detected at line 905
  []
 
 [58
 
 ]
-Overfull \vbox (4.99835pt too high) detected at line 902
+Overfull \vbox (18.59836pt too high) detected at line 905
  []
 
 [59
@@ -1906,21 +1905,21 @@ Overfull \hbox (2.12502pt too wide) has occurred while \output is active
 [60
 
 ]
-Overfull \hbox (7.04929pt too wide) in paragraph at lines 994--994
+Overfull \hbox (7.04929pt too wide) in paragraph at lines 997--997
  [] 
  []
 
 [61
 
 ]
-Overfull \hbox (7.04929pt too wide) in paragraph at lines 994--994
+Overfull \hbox (7.04929pt too wide) in paragraph at lines 997--997
  [] 
  []
 
 [62
 
 ]
-Overfull \hbox (7.04929pt too wide) in paragraph at lines 1062--1062
+Overfull \hbox (7.04929pt too wide) in paragraph at lines 1065--1065
  [] 
  []
 
@@ -1950,20 +1949,20 @@ Overfull \hbox (7.04929pt too wide) in paragraph at lines 1062--1062
 
  (Talk.aux)
 Package rerunfilecheck Info: File `Talk.out' has not changed.
-(rerunfilecheck)             Checksum: FDA928E2F02586C9720BD39788339F12;1866.
+(rerunfilecheck)             Checksum: 39352FB15E3825B3C926F914DA209F81;1866.
 Package logreq Info: Writing requests to 'Talk.run.xml'.
 \openout1 = `Talk.run.xml'.
 
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 927 ({)
+### simple group (level 1) entered at line 930 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 48452 strings out of 478907
- 1122348 string characters out of 2851891
- 2979002 words of memory out of 3000000
- 65336 multiletter control sequences out of 15000+600000
+ 48443 strings out of 478907
+ 1122057 string characters out of 2851891
+ 2976642 words of memory out of 3000000
+ 65327 multiletter control sequences out of 15000+600000
  505073 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,29n,124p,1131b,8471s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1998,9 +1997,9 @@ ams/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/kelru/AppDa
 ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Use
 rs/kelru/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathscr.pfb
 >
-Output written on Talk.pdf (69 pages, 1322212 bytes).
+Output written on Talk.pdf (69 pages, 1310414 bytes).
 PDF statistics:
- 4239 PDF objects out of 4296 (max. 8388607)
+ 4177 PDF objects out of 4296 (max. 8388607)
  158 named destinations out of 1000 (max. 500000)
- 3257 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3281 words of extra memory for PDF output out of 10000 (max. 10000000)
 
