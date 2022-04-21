@@ -1064,10 +1064,10 @@ But:
 \eas
 \end{frame}
 
-\begin{frame}{Connection on $\mathcal{P}$: Idea}
+\begin{frame}{Connection on $\mathcal{P}$: Revisiting the classical setup}
 \setbeamercovered{invisible}
 	\begin{minipage}[]{0.45\textwidth} 
-	\textcolor[rgb]{0,0.58,0}{$H$} a horizontal bundle of $\mathcal{P}$:
+	If $\mathcal{P}$ a typical principal bundle and \textcolor[rgb]{0,0.58,0}{$H$} a connection on it:
 	\begin{figure}
 	\begin{tikzpicture}[scale=1.2]
 		%Gray area
@@ -1081,8 +1081,53 @@ But:
 		\filldraw [fill=red, draw=red] (4.41,1) circle (1pt);
 		\filldraw [fill=red, draw=red] (4.41,-1) circle (1pt);
 		\draw [<-, draw=blue] (5.16,1) to[out=275,in=85] (5.16,-1);
-		\draw [->] (4.41,-1) -- (4.71,-0.88);
-		\draw [->] (4.41,1) -- (4.63,2);
+		\draw [->, thick] (4.41,-1) -- (4.71,-0.88);
+		%\draw [->] (4.41,1) -- (4.63,2);
+		\draw [->, thick] (4.41,1) -- (4.71,1.12);
+		%\draw [<-,dotted,thick] (4.63,2) -- (4.71,1.12);
+		%Labels
+		\draw (3.2,1) node {\textcolor[rgb]{0,0.58,0}{$H_{p \cdot g}$}};
+		\draw (3.2,-1) node {\textcolor[rgb]{0,0.58,0}{$H_p$}};
+		\draw (5.5,0) node {\textcolor[rgb]{0,0,1}{$\cdot g$}};
+		\draw (3,2.2) node {$\mathcal{P}_U$};
+		\draw (4.71,-0.6) node {$X$};
+		\draw (5,1.4) node {$\mathrm{D}_pr_g(X)$};
+		%\draw (5.5,1.56) node {$\thicksim \mathrm{D}_x\sigma(X)$};
+		%Text
+	\end{tikzpicture}
+	\end{figure}
+	\end{minipage}\hfill
+	\pause
+	\begin{minipage}[]{0.45\textwidth} 
+		$\mathcal{G}$ trivial, $\sigma \equiv g$ constant:
+		\bas
+		\mathrm{D}_p r_g (X)
+		&=
+		\mleft.\frac{\mathrm{d}}{\mathrm{d}t}\mright|_{t=0}\mleft( \alpha \cdot g \mright),
+		\eas
+		where $\alpha$ is the flow of $X$
+	\end{minipage}
+\end{frame}
+
+\begin{frame}{Connection on $\mathcal{P}$: Revisiting the classical setup}
+\setbeamercovered{invisible}
+	\begin{minipage}[]{0.45\textwidth} 
+	If $\mathcal{P}$ a typical principal bundle and \textcolor[rgb]{0,0.58,0}{$H$} a connection on it:
+	\begin{figure}
+	\begin{tikzpicture}[scale=1.2]
+		%Gray area
+		\filldraw [fill=gray!20!white, draw=white] (3.5,2.5) to[out=280,in=95](3.66,1) to[out=275,in=85] (3.66,-1) to[out=265,in=80] (3.5,-2.5) -- (5,-2.5) to[out=80, in=265] (5.16, -1) to[out=85, in=275] (5.16, 1) to[out=95,in=280] (5,2.5) -- cycle;
+		%lines
+		\draw (4.25,2.5) to[out=280,in=95](4.41,1) to[out=275,in=85] (4.41,-1) to[out=265,in=80] (4.25,-2.5);
+		\definecolor{darkgreen}{rgb}{0,0.58,0}
+		\draw [draw=darkgreen] (3.66,-1) to[out=280,in=200] (4.41,-1) to[out=20,in=100] (5.16, -1);
+		\draw [draw=darkgreen] (3.66,1) to[out=280,in=200] (4.41,1) to[out=20,in=100] (5.16,1);
+		%Auxiliary stuff like arrows and dots
+		\filldraw [fill=red, draw=red] (4.41,1) circle (1pt);
+		\filldraw [fill=red, draw=red] (4.41,-1) circle (1pt);
+		\draw [<-, draw=blue] (5.16,1) to[out=275,in=85] (5.16,-1);
+		\draw [->, thick] (4.41,-1) -- (4.71,-0.88);
+		\draw [->, thick] (4.41,1) -- (4.63,2);
 		\draw [->,dotted,thick] (4.41,1) -- (4.71,1.12);
 		\draw [<-,dotted,thick] (4.63,2) -- (4.71,1.12);
 		%Labels
@@ -1097,9 +1142,15 @@ But:
 	\end{tikzpicture}
 	\end{figure}
 	\end{minipage}\hfill
-	\pause
 	\begin{minipage}[]{0.45\textwidth} 
 	%Properties regarding the shift:
+	Now:
+	\bas
+	\mathrm{D}_p r_g(X) + \dots
+		&=
+		\mleft.\frac{\mathrm{d}}{\mathrm{d}t}\mright|_{t=0}\mleft( \alpha \cdot \sigma_{\pi \circ \alpha} \mright)
+	\eas
+	\pause
 	\begin{itemize}
 		\item Only vertical part in $\mathcal{G}$ of $\mathrm{D}\sigma$ matters
 		\item Shift is vertical in $\mathcal{P}$
