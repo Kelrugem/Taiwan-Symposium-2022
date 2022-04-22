@@ -1067,7 +1067,7 @@ But:
 \begin{frame}{Connection on $\mathcal{P}$: Revisiting the classical setup}
 \setbeamercovered{invisible}
 	\begin{minipage}[]{0.45\textwidth} 
-	If $\mathcal{P}$ a typical principal bundle and \textcolor[rgb]{0,0.58,0}{$H$} a connection on it:
+	If $\mathcal{P}$ a typical principal bundle ($\mathcal{G}$ trivial, $\sigma \equiv g$ constant), and \textcolor[rgb]{0,0.58,0}{$H$} a connection:
 	\begin{figure}
 	\begin{tikzpicture}[scale=1.2]
 		%Gray area
@@ -1099,20 +1099,28 @@ But:
 	\end{minipage}\hfill
 	\pause
 	\begin{minipage}[]{0.45\textwidth} 
-		$\mathcal{G}$ trivial, $\sigma \equiv g$ constant:
+	\begin{remark}[Integrated case]
+	Parallel transport $\mathup{PT}^{\mathcal{P}}_\alpha$ in $\mathcal{P}$:
 		\bas
-		\mathrm{D}_p r_g (X)
+		%\mathrm{D}_p r_g (X)
+		%&=
+		%\mleft.\frac{\mathrm{d}}{\mathrm{d}t}\mright|_{t=0}\mleft( \alpha \cdot g \mright),
+		\mathup{PT}^{\mathcal{P}}_\alpha(p \cdot g)
 		&=
-		\mleft.\frac{\mathrm{d}}{\mathrm{d}t}\mright|_{t=0}\mleft( \alpha \cdot g \mright),
+		\mathup{PT}^{\mathcal{P}}_\alpha(p) \cdot g
+		%\\
+		%&=
+		%\mathup{PT}^{\mathcal{P}}_\alpha(p) \cdot \mathup{PT}^{\mathcal{G}}_\alpha (g)
 		\eas
-		where $\alpha$ is the flow of $X$
+		where $\alpha:I \to M$ is a base path 
+	\end{remark}
 	\end{minipage}
 \end{frame}
 
-\begin{frame}{Connection on $\mathcal{P}$: Revisiting the classical setup}
+\begin{frame}{Connection on $\mathcal{P}$: General case}
 \setbeamercovered{invisible}
 	\begin{minipage}[]{0.45\textwidth} 
-	If $\mathcal{P}$ a typical principal bundle and \textcolor[rgb]{0,0.58,0}{$H$} a connection on it:
+	%If $\mathcal{P}$ a typical principal bundle and \textcolor[rgb]{0,0.58,0}{$H$} a connection on it:
 	\begin{figure}
 	\begin{tikzpicture}[scale=1.2]
 		%Gray area
@@ -1142,19 +1150,27 @@ But:
 	\end{tikzpicture}
 	\end{figure}
 	\end{minipage}\hfill
-	\begin{minipage}[]{0.45\textwidth} 
-	%Properties regarding the shift:
-	Now:
-	\bas
-	\mathrm{D}_p r_g(X) + \dots
+	\begin{minipage}[]{0.5\textwidth} 
+	%%Properties regarding the shift:
+	%Now:
+	%\bas
+	%\mathrm{D}_p r_g(X) + \dots
+		%&=
+		%\mleft.\frac{\mathrm{d}}{\mathrm{d}t}\mright|_{t=0}\mleft( \alpha \cdot \sigma_{\pi \circ \alpha} \mright)
+	%\eas
+	%\pause
+	%\begin{itemize}
+		%\item Only vertical part in $\mathcal{G}$ of $\mathrm{D}\sigma$ matters
+		%\item Shift is vertical in $\mathcal{P}$
+	%\end{itemize}
+	\begin{remark}[Integrated case]
+	Ansatz:
+		\bas
+		\mathup{PT}^{\mathcal{P}}_\alpha(p \cdot g)
 		&=
-		\mleft.\frac{\mathrm{d}}{\mathrm{d}t}\mright|_{t=0}\mleft( \alpha \cdot \sigma_{\pi \circ \alpha} \mright)
-	\eas
-	\pause
-	\begin{itemize}
-		\item Only vertical part in $\mathcal{G}$ of $\mathrm{D}\sigma$ matters
-		\item Shift is vertical in $\mathcal{P}$
-	\end{itemize}
+		\mathup{PT}^{\mathcal{P}}_\alpha(p) \cdot \mathup{PT}^{\mathcal{G}}_\alpha (g)
+		\eas
+	\end{remark}
 	\pause
 	\begin{remark}[General situation]
 	Introduce connection on $\mathcal{G}$

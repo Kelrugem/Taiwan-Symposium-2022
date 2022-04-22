@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.31)  22 APR 2022 01:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.31)  22 APR 2022 12:42
 entering extended mode
 **./Talk.tex
 (Talk.tex
@@ -1926,55 +1926,26 @@ Overfull \hbox (7.04929pt too wide) in paragraph at lines 1065--1065
 [63
 
 ]
-Overfull \vbox (0.94933pt too high) detected at line 1110
+Overfull \vbox (14.54933pt too high) detected at line 1118
  []
 
 [64
 
 ]
-Overfull \vbox (0.94933pt too high) detected at line 1110
+Overfull \vbox (14.54933pt too high) detected at line 1118
  []
 
 [65
 
-]
-Overfull \hbox (20.40445pt too wide) detected at line 1165
-[]
- []
+] [66
 
+] [67
 
-Overfull \vbox (1.56834pt too high) detected at line 1165
- []
-
-[66
-
-]
-Overfull \hbox (20.40445pt too wide) detected at line 1165
-[]
- []
-
-
-Overfull \vbox (1.56834pt too high) detected at line 1165
- []
-
-[67
-
-]
-Overfull \hbox (20.40445pt too wide) detected at line 1165
-[]
- []
-
-
-Overfull \vbox (1.56834pt too high) detected at line 1165
- []
-
-[68
+] [68
 
 ] [69
 
 ] [70
-
-] [71
 
 ]
 \tf@nav=\write7
@@ -1998,10 +1969,10 @@ Package logreq Info: Writing requests to 'Talk.run.xml'.
 ### simple group (level 1) entered at line 930 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 48458 strings out of 478907
- 1122498 string characters out of 2851891
- 2977993 words of memory out of 3000000
- 65338 multiletter control sequences out of 15000+600000
+ 48471 strings out of 478907
+ 1123135 string characters out of 2851891
+ 2977994 words of memory out of 3000000
+ 65353 multiletter control sequences out of 15000+600000
  505073 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,29n,124p,1131b,8471s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2036,9 +2007,9 @@ ams/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/kelru/AppDa
 ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Use
 rs/kelru/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathscr.pfb
 >
-Output written on Talk.pdf (71 pages, 1354365 bytes).
+Output written on Talk.pdf (70 pages, 1350325 bytes).
 PDF statistics:
- 4363 PDF objects out of 5155 (max. 8388607)
- 162 named destinations out of 1000 (max. 500000)
- 3377 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 4352 PDF objects out of 5155 (max. 8388607)
+ 160 named destinations out of 1000 (max. 500000)
+ 3479 words of extra memory for PDF output out of 10000 (max. 10000000)
 
